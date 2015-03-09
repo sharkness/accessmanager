@@ -33,4 +33,14 @@ class HomeController extends Controller {
 		return view('home');
 	}
 
+	/**
+	 * Show the application start page to test css/layout.
+	 *
+	 * @return Response
+	 */
+	public function start()
+	{
+		return view('start');
+	}
+
 }
