@@ -8,6 +8,7 @@
 
 			<div class="panel-body">
                                 {!! link_to_route('nodes.index', 'Back', null, ['class' => 'btn btn-primary']) !!}
+                                {!! link_to_route('nodes.modules.index', 'View Modules', $node->id, ['class' => 'btn btn-primary']) !!}
 			    <h4>Node Details</h4>
                                 <table class="table table-hover">
                                     <tr>

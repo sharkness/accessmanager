@@ -8,21 +8,19 @@
        @endif
 <hr>    
 </div>
+
+<!-- Temporary -->
 <div class="form-group">
    {!! Form::label('name', 'Name: ') !!}
    {!! Form::text('name', $nameAutofill, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
-   {!! Form::label('location', 'Location: ') !!}
-   {!! Form::text('location', null, ['class' => 'form-control']) !!}
+   {!! Form::label('slot_number', 'Slot Number: ') !!}
+   {!! Form::text('slot_number', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
-   {!! Form::label('mgmt_ip', 'IP Address: ') !!}
-   {!! Form::text('mgmt_ip', null, ['class' => 'form-control']) !!}
-</div>
-<div class="form-group">
-   {!! Form::label('model_number', 'Model: ') !!}
-   {!! Form::select('model_number', ['ICX6610' => 'ICX6610', 'SX800' => 'SX800'], 'SX800') !!}
+   {!! Form::label('port_count', 'Port Count: ') !!}
+   {!! Form::text('port_count', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
    {!! Form::label('notes', 'Notes: ') !!}
