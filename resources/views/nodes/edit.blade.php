@@ -19,7 +19,7 @@
                                             </a>
                                         </li>
                                         <li class="active">
-                                            <i class="fa fa-cloud"></i> Editing: {{ $node->name }}
+                                            <i class="fa fa-edit"></i> Editing: {{ $node->name }}
                                         </li>
                                     </ol>
                                 </div>

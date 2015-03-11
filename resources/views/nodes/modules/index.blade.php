@@ -20,19 +20,17 @@
                                         </li>
                                         <li class="active">
                                             <a href="/nodes/{{ $node->id }}">
-                                                <i class="fa fa-cloud"></i> {{ $node->name }}
+                                                <i class="fa fa-tasks"></i> {{ $node->name }}
                                             </a>
                                         </li>
                                         <li class="active">
-                                            <i class="fa fa-cloud"></i> Modules
+                                            <i class="fa fa-sitemap"></i> Modules
                                         </li>
                                     </ol>
                                 </div>
 
 			<div class="panel-body">
-                                <!-- {!! link_to_route('nodes.show', 'Back', $node->id, ['class' => 'btn btn-primary']) !!}
-                                {!! link_to_route('nodes.modules.create', 'Add Module to ' . $node->name, $node->id, ['class' => 'btn btn-primary']) !!} -->
-                                <h5>Here are the modules for {{ $node->name }}</h5>
+                                <h5><i class="fa fa-sitemap"></i> Here are the modules for {{ $node->name }}</h5>
                                 <table class="table table-hover">
                                     <tr>
                                         <th>Name</th>

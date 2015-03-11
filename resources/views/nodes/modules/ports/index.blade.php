@@ -35,9 +35,7 @@
                                 </div>
 
 			<div class="panel-body">
-                                {!! link_to_route('nodes.modules.show', 'Back', [$node->id, $module->id], ['class' => 'btn btn-primary']) !!}
-                                {!! link_to_route('nodes.modules.ports.create', 'Add Ports for this module', [$node->id, $module->id], ['class' => 'btn btn-primary']) !!}
-                                <h5>You are viewing ports in module {{ $module->name }} for node {{ $node->name }}</h5>
+                                <h5><i class="fa fa-square"></i> Here are the ports for {{ $node->name }}</h5>
                                 <table class="table table-hover">
                                     <tr>
                                         <th>Port Name</th>

@@ -20,43 +20,26 @@
                                         </li>
                                         <li class="active">
                                             <a href="/nodes/{{ $node->id }}">
-                                                <i class="fa fa-cloud"></i> {{ $node->name }}
+                                                <i class="fa fa-tasks"></i> {{ $node->name }}
                                             </a>
                                         </li>
                                         <li class="active">
                                             <a href="/nodes/{{ $node->id }}/modules/{{ $module->id }}">
-                                                <i class="fa fa-cloud"></i> {{ $module->name }}
+                                                <i class="fa fa-sitemap"></i> {{ $module->name }}
                                             </a>
                                         </li>
                                         <li class="active">
-                                            <i class="fa fa-cloud"></i> {{ $port->name }}
+                                            <i class="fa fa-square"></i> {{ $port->name }}
                                         </li>
                                     </ol>
                                 </div>
 
 			<div class="panel-body">
-                                <!-- {!! link_to_route('nodes.modules.ports.index', 'Back', [$node->id, $module->id], ['class' => 'btn btn-primary']) !!} -->                                
-                                <h4>Port Details [{!! link_to_route('nodes.modules.ports.edit', 'Edit', [$node->id, $module->id, $port->id]) !!}]</h4>
+                                <h4><i class="fa fa-square"></i> Port Details [{!! link_to_route('nodes.modules.ports.edit', 'Edit', [$node->id, $module->id, $port->id]) !!}]</h4>
                                 Name:  {{ $port->name }}<br>
                                 Port Number: {{ $port->port_number }}<br>
                                 Notes: {{ $port->notes }}<br>
                                 <hr>
-                                
-                                <!-- <table class="table table-hover">
-                                    <tr>
-                                        <th>Properties</th>
-                                        <th>Values</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Port Name</td><td>{{ $port->name}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Port Number</td><td>{{ $port->number}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Port Notes</td><td>{{ $port->notes}}</td>
-                                    </tr>
-                                </table> -->
                                 
 			</div>
 		</div>

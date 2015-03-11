@@ -20,16 +20,16 @@
                                         </li>
                                         <li class="active">
                                             <a href="/nodes/{{ $node->id }}">
-                                                <i class="fa fa-cloud"></i> {{ $node->name }}
+                                                <i class="fa fa-tasks"></i> {{ $node->name }}
                                             </a>
                                         </li>
                                         <li class="active">
                                             <a href="/nodes/{{ $node->id }}/modules/{{ $module->id }}">
-                                                <i class="fa fa-cloud"></i> {{ $module->name }}
+                                                <i class="fa fa-sitemap"></i> {{ $module->name }}
                                             </a>
                                         </li>
                                         <li class="active">
-                                            <i class="fa fa-cloud"></i> Editing {{ $port->name }}
+                                            <i class="fa fa-edit"></i> Editing {{ $port->name }}
                                         </li>
                                     </ol>
                                 </div>

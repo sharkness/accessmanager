@@ -19,7 +19,7 @@
                                             </a>
                                         </li>
                                         <li class="active">
-                                            <i class="fa fa-cloud"></i> Add new node
+                                            <i class="fa fa-edit"></i> Add new node
                                         </li>
                                     </ol>
                                 </div>
