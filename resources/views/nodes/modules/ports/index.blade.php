@@ -6,6 +6,34 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Ports Index Page</div>
 
+                                <div class="panel-header">
+                                    <ol class="breadcrumb">
+                                        <li class="active">
+                                            <a href="/dashboard">
+                                                <i class="fa fa-dashboard"></i> Dashboard
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="/nodes">
+                                                <i class="fa fa-cloud"></i> AccessNodes
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="/nodes/{{ $node->id }}">
+                                                <i class="fa fa-cloud"></i> {{ $node->name }}
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="/nodes/{{ $node->id }}/modules/{{ $module->id }}">
+                                                <i class="fa fa-cloud"></i> {{ $module->name }}
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <i class="fa fa-cloud"></i> Ports
+                                        </li>
+                                    </ol>
+                                </div>
+
 			<div class="panel-body">
                                 {!! link_to_route('nodes.modules.show', 'Back', [$node->id, $module->id], ['class' => 'btn btn-primary']) !!}
                                 {!! link_to_route('nodes.modules.ports.create', 'Add Ports for this module', [$node->id, $module->id], ['class' => 'btn btn-primary']) !!}

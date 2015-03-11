@@ -5,6 +5,24 @@
 	<div class="col-md-10 col-md-offset-1">
 		<div class="panel panel-default">
 			<div class="panel-heading">Nodes Edit Page</div>
+            
+                                <div class="panel-header">
+                                    <ol class="breadcrumb">
+                                        <li class="active">
+                                            <a href="/dashboard">
+                                                <i class="fa fa-dashboard"></i> Dashboard
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="/nodes">
+                                                <i class="fa fa-cloud"></i> AccessNodes
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <i class="fa fa-cloud"></i> Editing: {{ $node->name }}
+                                        </li>
+                                    </ol>
+                                </div>
 
 			<div class="panel-body">
                                 {!! Form::model($node, ['method' => 'PATCH', 'url' => 'nodes/' . $node->id]) !!}

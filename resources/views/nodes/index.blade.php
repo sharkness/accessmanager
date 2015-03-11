@@ -4,7 +4,20 @@
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
 		<div class="panel panel-default">
-			<div class="panel-heading">Nodes Index Page</div>
+                    <div class="panel-heading">Nodes Index Page</div>
+
+                        <div class="panel-header">
+                            <ol class="breadcrumb">
+                                <li class="active">
+                                    <a href="/dashboard">
+                                        <i class="fa fa-dashboard"></i> Dashboard
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <i class="fa fa-cloud"></i> AccessNodes
+                                </li>
+                            </ol>
+                        </div>
 
 			<div class="panel-body">
                                 <table class="table table-hover">

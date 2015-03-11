@@ -5,6 +5,25 @@
 	<div class="col-md-10 col-md-offset-1">
 		<div class="panel panel-default">
 			<div class="panel-heading">Viewing node {{ $node->name }}</div>
+            
+                                <div class="panel-header">
+                                    <ol class="breadcrumb">
+                                        <li class="active">
+                                            <a href="/dashboard">
+                                                <i class="fa fa-dashboard"></i> Dashboard
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="/nodes">
+                                                <i class="fa fa-cloud"></i> AccessNodes
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <i class="fa fa-cloud"></i> {{ $node->name }}
+                                        </li>
+                                    </ol>
+                                </div>
+            
 
 			<div class="panel-body">
                                 {!! link_to_route('nodes.index', 'Back', null, ['class' => 'btn btn-primary']) !!}
@@ -36,6 +55,7 @@
                                         <td>{{ $node->notes }}</td>
                                     </tr>
                                 </table>
+
 			</div>
 		</div>
 	</div>

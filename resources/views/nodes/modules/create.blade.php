@@ -6,6 +6,34 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Modules Create Page For {{ $node->name }}</div>
 
+                                <div class="panel-header">
+                                    <ol class="breadcrumb">
+                                        <li class="active">
+                                            <a href="/dashboard">
+                                                <i class="fa fa-dashboard"></i> Dashboard
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="/nodes">
+                                                <i class="fa fa-cloud"></i> AccessNodes
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="/nodes/{{ $node->id }}">
+                                                <i class="fa fa-cloud"></i> {{ $node->name }}
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="/nodes/{{ $node->id }}/modules">
+                                                <i class="fa fa-cloud"></i> Modules in {{ $node->name }}
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <i class="fa fa-cloud"></i> Add a module to {{ $node->name }}
+                                        </li>
+                                    </ol>
+                                </div>
+
 			<div class="panel-body">
                                 <h4>Add a Module</h4>
                                 
