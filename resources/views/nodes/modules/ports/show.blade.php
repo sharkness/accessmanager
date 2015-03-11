@@ -35,10 +35,14 @@
                                 </div>
 
 			<div class="panel-body">
-                                {!! link_to_route('nodes.modules.ports.index', 'Back', [$node->id, $module->id], ['class' => 'btn btn-primary']) !!}
+                                <!-- {!! link_to_route('nodes.modules.ports.index', 'Back', [$node->id, $module->id], ['class' => 'btn btn-primary']) !!} -->                                
+                                <h4>Port Details [{!! link_to_route('nodes.modules.ports.edit', 'Edit', [$node->id, $module->id, $port->id]) !!}]</h4>
+                                Name:  {{ $port->name }}<br>
+                                Port Number: {{ $port->port_number }}<br>
+                                Notes: {{ $port->notes }}<br>
+                                <hr>
                                 
-                                <h4>You are viewing port {{ $port->name }}</h4>
-                                <table class="table table-hover">
+                                <!-- <table class="table table-hover">
                                     <tr>
                                         <th>Properties</th>
                                         <th>Values</th>
@@ -52,7 +56,8 @@
                                     <tr>
                                         <td>Port Notes</td><td>{{ $port->notes}}</td>
                                     </tr>
-                                </table>
+                                </table> -->
+                                
 			</div>
 		</div>
 	</div>

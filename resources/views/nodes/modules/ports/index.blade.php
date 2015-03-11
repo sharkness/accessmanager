@@ -43,15 +43,13 @@
                                         <th>Port Name</th>
                                         <th>Port Number</th>
                                         <th>Notes</th>
-                                        <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
                                     @foreach ($ports as $port)
                                         <tr>
                                             <td>{!! link_to_route('nodes.modules.ports.show', $port->name, [$node->id, $module->id, $port->id]) !!}</td>
-                                            <td>{{ $port->number }}</td>
+                                            <td>{{ $port->port_number }}</td>
                                             <td>{{ $port->notes }}</td>
-                                            <td>{!! link_to_route('nodes.modules.ports.edit', 'Edit', [$node->id, $module->id, $port->id], ['class' => 'btn btn-primary btn-xs']) !!}</td>
                                             <td>
                                                 {!! Form::model($port, ['route' => ['nodes.modules.ports.destroy', $node->id, $module->id, $port->id], 'method' => 'delete' ]) !!}
                                                 {!! Form::button('delete', ['type' => 'submit', 'class' => 'btn btn-primary btn-xs'] ) !!}

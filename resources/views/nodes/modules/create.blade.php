@@ -24,11 +24,6 @@
                                             </a>
                                         </li>
                                         <li class="active">
-                                            <a href="/nodes/{{ $node->id }}/modules">
-                                                <i class="fa fa-cloud"></i> Modules in {{ $node->name }}
-                                            </a>
-                                        </li>
-                                        <li class="active">
                                             <i class="fa fa-cloud"></i> Add a module to {{ $node->name }}
                                         </li>
                                     </ol>

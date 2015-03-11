@@ -64,7 +64,8 @@ class ModulesController extends Controller {
 	 */
 	public function show(Node $node, Module $module)
 	{
-	    return view('nodes.modules.show')->with('node', $node)->with('module', $module);
+            $ports = $module->ports()->get();
+            return view('nodes.modules.show')->with('node', $node)->with('module', $module)->with('ports', $ports);
 	}
 
 	/**

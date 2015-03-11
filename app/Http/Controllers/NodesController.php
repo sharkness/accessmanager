@@ -62,7 +62,8 @@ class NodesController extends Controller {
 	 */
 	public function show(Node $node)
 	{
-            return view('nodes.show')->with('node', $node);
+            $modules = $node->modules()->get();
+            return view('nodes.show')->with('node', $node)->with('modules', $modules);
 	}
 
 	/**

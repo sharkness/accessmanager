@@ -30,10 +30,16 @@
                                 </div>
 
 			<div class="panel-body">
-                                {!! link_to_route('nodes.modules.index', 'Back', $node->id, ['class' => 'btn btn-primary']) !!}
-                                {!! link_to_route('nodes.modules.ports.index', 'View Ports for this module', [$node->id, $module->id], ['class' => 'btn btn-primary']) !!}
-                                <h5>You are viewing module {{ $module->name }} on node {{ $node->name }}</h5>
-                                <table class="table table-hover">
+                                <!-- {!! link_to_route('nodes.modules.index', 'Back', $node->id, ['class' => 'btn btn-primary']) !!}
+                                {!! link_to_route('nodes.modules.ports.index', 'View Ports for this module', [$node->id, $module->id], ['class' => 'btn btn-primary']) !!} -->
+                                <h4>Module Details [{!! link_to_route('nodes.modules.edit', 'Edit', [$node->id, $module->id]) !!}]</h4>
+                                Name: {{ $module->name }}<br>
+                                Port count: {{ $module->port_count }}<br>
+                                Slot number: {{ $module->slot_number }}<br>
+                                Notes: {{ $module->notes }}<br>
+                                <hr>
+                                
+                                <!-- <table class="table table-hover">
                                     <tr>
                                         <th>Properties</th>
                                         <th>Values</th>
@@ -50,7 +56,30 @@
                                     <tr>
                                         <td>Notes</td><td>{{ $module->notes }}</td>
                                     </tr>
+                                </table> -->
+                                
+                                <h4>Ports in {{ $module->name }}</h4>
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th>Port Name</th>
+                                        <th>Port Number</th>
+                                        <th>Notes</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                    @foreach ($ports as $port)
+                                        <tr>
+                                            <td>{!! link_to_route('nodes.modules.ports.show', $port->name, [$node->id, $module->id, $port->id]) !!}</td>
+                                            <td>{{ $port->port_number }}</td>
+                                            <td>{{ $port->notes }}</td>
+                                            <td>
+                                                {!! Form::model($port, ['route' => ['nodes.modules.ports.destroy', $node->id, $module->id, $port->id], 'method' => 'delete' ]) !!}
+                                                {!! Form::button('delete', ['type' => 'submit', 'class' => 'btn btn-primary btn-xs'] ) !!}
+                                                {!! Form::close() !!}    
+                                            </td>                                            
+                                        </tr>
+                                    @endforeach
                                 </table>
+                                
 			</div>
 		</div>
 	</div>
