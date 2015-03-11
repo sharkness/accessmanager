@@ -15,12 +15,16 @@ class CreatePortsTable extends Migration {
 		Schema::create('ports', function(Blueprint $table)
 		{
                     $table->increments('id');
-                    $table->integer('node_id')->unsigned();
                     $table->integer('module_id')->unsigned();
                     $table->string('name');
                     $table->integer('port_number');
                     $table->text('notes');
                     $table->timestamps();
+                    
+                    $table->foreign('module_id')
+                       ->references('id')
+                       ->on('modules')
+                       ->onDelete('cascade');                       
 		});
 	}
 

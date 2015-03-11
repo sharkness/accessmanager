@@ -9,11 +9,6 @@ class Port extends Model {
             'port_number',
             'notes'  
 	];
-
-    public function node()
-    {
-       return $this->belongsTo('App\Node');
-    }
     
     public function module()
     {
