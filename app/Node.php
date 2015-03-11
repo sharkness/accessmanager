@@ -20,5 +20,9 @@ class Node extends Model {
        return $this->hasMany('App\Module');
     }
     
+    public function ports()
+    {
+        return $this->hasManyThrough(Port::class, Module::class);
+    }    
 
 }

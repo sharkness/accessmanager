@@ -11,7 +11,7 @@
                                     <h4>AccessNodes Create Page</h4>
                                     Add an AccessNode
                                     {!! Form::open(['route' => 'nodes.store']) !!}
-                                        @include('nodes._form', ['submitButtonText' => 'Add Node'])
+                                        @include('nodes._form', ['submitButtonText' => 'Add Node', 'nameAutofill' => 'Switch name or nickname here'])
                                     {!! Form::close() !!}
 				
 			</div>

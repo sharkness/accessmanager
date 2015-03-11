@@ -19,5 +19,9 @@ class Module extends Model {
        return $this->belongsTo('App\Node');
     }
     
+    public function ports()
+    {
+        return $this->hasMany('App\Port');
+    }
 
 }

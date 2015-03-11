@@ -8,6 +8,7 @@
 
 			<div class="panel-body">
                                 {!! link_to_route('nodes.modules.index', 'Back', $node->id, ['class' => 'btn btn-primary']) !!}
+                                {!! link_to_route('nodes.modules.ports.index', 'View Ports for this module', [$node->id, $module->id], ['class' => 'btn btn-primary']) !!}
                                 <h5>You are viewing module {{ $module->name }} on node {{ $node->name }}</h5>
                                 <table class="table table-hover">
                                     <tr>

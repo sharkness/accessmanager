@@ -8,7 +8,7 @@
 
 			<div class="panel-body">
                                 {!! Form::model($node, ['method' => 'PATCH', 'url' => 'nodes/' . $node->id]) !!}
-                                    @include('nodes._form', ['submitButtonText' => 'Update Node', $nameAutofill => $node->name])
+                                    @include('nodes._form', ['submitButtonText' => 'Update Node', 'nameAutofill' => $node->name])
                                 {!! Form::close() !!}
 			</div>
 		</div>

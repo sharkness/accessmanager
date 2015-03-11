@@ -19,7 +19,7 @@ Route::get('start', 'HomeController@start');
 
 Route::resource('nodes', 'NodesController');
 Route::resource('nodes.modules', 'ModulesController');
-
+Route::resource('nodes.modules.ports', 'PortsController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
