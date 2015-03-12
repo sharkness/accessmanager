@@ -29,8 +29,6 @@ class NagiosController extends Controller {
     public function show(NagiosHost $nagiosHost)
     {
         $nagiosHoststatus = $nagiosHost->hoststatus;
-        // $nagiosStatus = $host_object_id->hoststatus;
-        // return view('monitoring.show')->with('nagios', $host_object_id)->with('nagiosStatus', $nagiosStatus);
         return view('monitoring.show')->with('nagiosHost', $nagiosHost)->with('nagiosHoststatus', $nagiosHoststatus);
     }
 

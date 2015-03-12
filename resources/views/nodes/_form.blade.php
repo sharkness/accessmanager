@@ -25,6 +25,10 @@
    {!! Form::select('model_number', ['ICX6610' => 'ICX6610', 'SX800' => 'SX800'], 'SX800') !!}
 </div>
 <div class="form-group">
+   {!! Form::label('host_object_id', 'Nagios host_object_id: ') !!}
+   {!! Form::text('host_object_id', null, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
    {!! Form::label('notes', 'Notes: ') !!}
    {!! Form::textarea('notes', null, ['class' => 'form-control']) !!}
 </div>

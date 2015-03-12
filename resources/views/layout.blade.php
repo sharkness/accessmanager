@@ -65,7 +65,7 @@
                         <a href="/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="/monitor"><i class="fa fa-fw fa-binoculars"></i> Monitoring</a>
+                        <a href="/monitoring"><i class="fa fa-fw fa-binoculars"></i> Monitoring</a>
                     </li>
                     <li>
                         <a href="/logviewer"><i class="fa fa-fw fa-tasks"></i> Logging</a>

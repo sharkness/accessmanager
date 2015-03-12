@@ -9,7 +9,8 @@ class Node extends Model {
         'location',
         'mgmt_ip',
         'model_number',
-        'notes'  
+        'notes',
+        'host_object_id'
     ];
     
     /**

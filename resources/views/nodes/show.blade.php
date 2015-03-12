@@ -27,12 +27,29 @@
 
 			<div class="panel-body">
 			    <h4><i class="fa fa-tasks"></i> Node Details [{!! link_to_route('nodes.edit', 'Edit', $node->id) !!}]</h4>
-                                Name: {{ $node->name }}<br>
-                                Model: {{ $node->model_number }}<br>
-                                Location: {{ $node->location }}<br>
-                                Management IP: {{ $node->mgmt_ip }}<br>
-                                Notes: {{ $node->notes }}<br>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        Name: {{ $node->name }}<br>
+                                        Model: {{ $node->model_number }}<br>
+                                        Location: {{ $node->location }}<br>
+                                        Management IP: {{ $node->mgmt_ip }}<br>
+                                        Notes: {{ $node->notes }}<br>
+                                    </div>
+                                    <div class="col-md-6">
+                                        @if ( isset($nagiosHoststatus->current_state))
+                                            @if ($nagiosHoststatus->current_state == 0)
+                                                This host is up!
+                                            @elseif ($nagiosHoststatus->current_state == 1)
+                                                This host is down!
+                                            @endif
+                                        @else
+                                            This host is not monitored.
+                                        @endif
+                                    </div>
+                                </div>
+                                
                                 <hr>
+
                                 
                                 <h4>Modules in {{ $node->name }}</h4>
                                 @if (count($modules))
