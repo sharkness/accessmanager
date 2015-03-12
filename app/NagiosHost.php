@@ -13,5 +13,11 @@ class NagiosHost extends Model {
     {
         return $this->hasOne('App\NagiosHoststatus', 'host_object_id', 'host_object_id');
     }
+    
+    public function getObjectIdByAddress($address)
+    {
+        $objectId = DB::connection('mysql3')->select('select host_object_id from nagios_hosts where address = ?', [$address]);
+        return $objectId;
+    }
         
 }
