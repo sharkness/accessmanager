@@ -15,10 +15,22 @@
                         </div>
 
 			<div class="panel-body">
-                                <h4>Monitoring Page</h4>
-                                @foreach ($nagios_hosts as $host)
-                                    {{ $host->address }}<br>
-                                @endforeach
+                                <h4>All monitored hosts</h4>
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th>Display Name</th>
+                                        <th>Alias</th>
+                                        <th>Address</th>
+                                    </tr>
+                                    @foreach ($nagios_hosts as $host)
+                                        <tr>
+                                            <td>{{ $host->display_name }}</td>
+                                            <td>{{ $host->alias }}</td>
+                                            <td>{{ $host->address }}</td>
+                                        </tr>
+                                    @endforeach
+                                </table>
+
 			</div>
 		</div>
 	</div>
