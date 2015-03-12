@@ -22,6 +22,9 @@ Route::resource('nodes', 'NodesController');
 Route::resource('nodes.modules', 'ModulesController');
 Route::resource('nodes.modules.ports', 'PortsController');
 
+Route::get('monitoring', 'NagiosController@index');
+Route::get('monitoring/{host_object_id}', 'NagiosController@show');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

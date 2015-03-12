@@ -26,6 +26,7 @@ class RouteServiceProvider extends ServiceProvider {
                     $router->model('nodes', 'App\Node');
                     $router->model('modules', 'App\Module');
                     $router->model('ports', 'App\Port');
+                    $router->model('host_object_id', 'App\NagiosHost');
 	}
 
 	/**

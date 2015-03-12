@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Node;
 use App\Http\Requests\CreateNodeRequest;
+use App\NagiosHost;
+use App\NagiosHoststatus;
 
 class NodesController extends Controller {
     
