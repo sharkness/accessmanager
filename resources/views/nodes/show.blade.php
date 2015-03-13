@@ -36,20 +36,19 @@
                                         Notes: {{ $node->notes }}<br>
                                     </div>
                                     <div class="col-md-6">
-                                        @if ( isset($nagiosHoststatus->current_state))
-                                            @if ($nagiosHoststatus->current_state == 0)
-                                                This host is up!
-                                            @elseif ($nagiosHoststatus->current_state == 1)
-                                                This host is down!
+                                        @if ( ! isset($nagiosHostStatus))
+                                            Monitoring is not set up for this host.
+                                        @elseif ( isset($nagiosHostStatus))
+                                            @if ( $nagiosHostStatus->current_state == 0)
+                                                Status: This host is up!
+                                            @elseif ( $nagiosHostStatus->current_state == 1)
+                                                Status: This host is down!
                                             @endif
-                                        @else
-                                            This host is not monitored.
                                         @endif
                                     </div>
                                 </div>
                                 
                                 <hr>
-
                                 
                                 <h4>Modules in {{ $node->name }}</h4>
                                 @if (count($modules))

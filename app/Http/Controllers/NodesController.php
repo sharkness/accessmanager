@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Node;
 use App\Http\Requests\CreateNodeRequest;
 use App\NagiosHost;
+use App\NagiosHoststatus;
 
 class NodesController extends Controller {
     
@@ -64,14 +65,13 @@ class NodesController extends Controller {
 	public function show(Node $node)
 	{
             $modules = $node->modules()->get();
-            // This might be a bit non-standard, but let's check whether or not there is a "host_object_id" in the database
-            // for this node.  If not, let's just move on to the view which will check and tell us that this host is not monitored.
-            // Otherwise, go get the hoststatus from the NagiosHost model's relationship with NagiosHoststatus.
-            if ($node->host_object_id == 0) {
-                return view('nodes.show')->with('node', $node)->with('modules', $modules);
+            if ($node->host_object_id == 0)
+            {
+                return view('nodes.show')->with('node', $node)->with('modules', $modules);               
             } else {
-                $nagiosHoststatus = NagiosHost::findOrFail($node->host_object_id)->hoststatus;
-                return view('nodes.show')->with('node', $node)->with('modules', $modules)->with('nagiosHoststatus', $nagiosHoststatus);
+                $nagiosHostData = $node->nagiosHostData;
+                $nagiosHostStatus = NagiosHoststatus::where('host_object_id', '=', $nagiosHostData->host_object_id)->first();
+                return view('nodes.show')->with('node', $node)->with('modules', $modules)->with('nagiosHostData', $nagiosHostData)->with('nagiosHostStatus', $nagiosHostStatus);                
             }
 	}
 

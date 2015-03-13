@@ -14,10 +14,9 @@ class NagiosHost extends Model {
         return $this->hasOne('App\NagiosHoststatus', 'host_object_id', 'host_object_id');
     }
     
-    public function getObjectIdByAddress($address)
+    public function node()
     {
-        $objectId = DB::connection('mysql3')->select('select host_object_id from nagios_hosts where address = ?', [$address]);
-        return $objectId;
+        return $this->belongsTo('App\Node', 'address', 'mgmt_ip');
     }
-        
+            
 }

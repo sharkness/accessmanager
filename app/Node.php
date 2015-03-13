@@ -24,6 +24,11 @@ class Node extends Model {
     public function ports()
     {
         return $this->hasManyThrough(Port::class, Module::class);
-    }    
-
+    }
+    
+    public function nagiosHostData()
+    {
+        return $this->hasOne('App\NagiosHost', 'address', 'mgmt_ip');
+    }
+    
 }
