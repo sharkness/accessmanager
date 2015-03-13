@@ -15,7 +15,13 @@
                         </div>
 
 			<div class="panel-body">
-                                {!! link_to_route('nodes.index', 'Nodes') !!}
+                                {!! link_to_route('nodes.index', 'Nodes', null, [
+                                    'type' => 'button',
+                                    'id' => 'myButton',
+                                    'data-loading-text' => 'Loading...',
+                                    'class' => 'btn btn-primary',
+                                    'autocomplete' => 'off'
+                                ]) !!}
 			</div>
 		</div>
 	</div>

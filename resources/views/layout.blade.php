@@ -68,7 +68,13 @@
                         <a href="/monitoring"><i class="fa fa-fw fa-binoculars"></i> Monitoring</a>
                     </li>
                     <li>
-                        <a href="/logviewer"><i class="fa fa-fw fa-tasks"></i> Logging</a>
+                        <a href="/logs"><i class="fa fa-fw fa-book"></i> Logs</a>
+                    </li>
+                    <li>
+                        <a href="/dhcp"><i class="fa fa-link"></i> DHCP Server</a>
+                    </li>
+                    <li>
+                        <a href="/tftp"><i class="fa fa-archive"></i> TFTP Server</a>
                     </li>
                     <li>
                         <a href="/support"><i class="fa fa-fw fa-support"></i> Support</a>
@@ -121,7 +127,8 @@
             
         <!-- Script to confirm deletes -->
         <script src="/js/app.js"></script>
-        
+        <!-- Script to make buttons say "Loading..." when they are clicked -->
+        <script src="/js/button-loading.js"></script>
     
 </body>
 </html>

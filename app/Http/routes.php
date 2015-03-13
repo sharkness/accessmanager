@@ -18,12 +18,17 @@ Route::get('home', 'HomeController@index');
 Route::get('start', 'HomeController@start');
 
 Route::get('dashboard', 'DashboardController@index');
+
 Route::resource('nodes', 'NodesController');
 Route::resource('nodes.modules', 'ModulesController');
 Route::resource('nodes.modules.ports', 'PortsController');
 
 Route::get('monitoring', 'NagiosController@index');
 Route::get('monitoring/{host_object_id}', 'NagiosController@show');
+
+Route::get('logs', 'LogsController@index');
+Route::get('dhcp', 'DhcpController@index');
+Route::get('tftp', 'TftpController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
