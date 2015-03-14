@@ -42,6 +42,7 @@
                                     <tr>
                                         <th>Port Name</th>
                                         <th>Port Number</th>
+                                        <th>Management IP</th>
                                         <th>Notes</th>
                                         <th>Delete</th>
                                     </tr>
@@ -49,6 +50,7 @@
                                         <tr>
                                             <td>{!! link_to_route('nodes.modules.ports.show', $port->name, [$node->id, $module->id, $port->id]) !!}</td>
                                             <td>{{ $port->port_number }}</td>
+                                            <td>{{ $port->mgmt_ip }}</td>
                                             <td>{{ $port->notes }}</td>
                                             <td>
                                                 {!! Form::model($port, ['route' => ['nodes.modules.ports.destroy', $node->id, $module->id, $port->id], 'method' => 'delete' ]) !!}

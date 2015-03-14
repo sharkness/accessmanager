@@ -18,6 +18,10 @@
    {!! Form::text('port_number', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
+   {!! Form::label('mgmt_ip', 'Management IP: ') !!}
+   {!! Form::text('mgmt_ip', null, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
    {!! Form::label('notes', 'Notes: ') !!}
    {!! Form::textarea('notes', null, ['class' => 'form-control']) !!}
 </div>

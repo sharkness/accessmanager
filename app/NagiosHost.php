@@ -18,5 +18,10 @@ class NagiosHost extends Model {
     {
         return $this->belongsTo('App\Node', 'address', 'mgmt_ip');
     }
+
+    public function port()
+    {
+        return $this->belongsTo('App\Port', 'address', 'mgmt_ip');
+    }
             
 }

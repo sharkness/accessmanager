@@ -36,9 +36,26 @@
 
 			<div class="panel-body">
                                 <h4><i class="fa fa-square"></i> Port Details [{!! link_to_route('nodes.modules.ports.edit', 'Edit', [$node->id, $module->id, $port->id]) !!}]</h4>
-                                Name:  {{ $port->name }}<br>
-                                Port Number: {{ $port->port_number }}<br>
-                                Notes: {{ $port->notes }}<br>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        Name:  {{ $port->name }}<br>
+                                        Port Number: {{ $port->port_number }}<br>
+                                        Management IP: {{ $port->mgmt_ip }}<br>
+                                        Notes: {{ $port->notes }}<br>
+                                    </div>
+                                    <div class="col-md-6">
+                                        @if ( ! isset($nagiosHostStatus))
+                                            Monitoring is not set up for this host.
+                                        @elseif ( isset($nagiosHostStatus))
+                                            @if ( $nagiosHostStatus->current_state == 0)
+                                                Status: This host is up!
+                                            @elseif ( $nagiosHostStatus->current_state == 1)
+                                                Status: This host is down!
+                                            @endif
+                                        @endif
+                                    </div>
+                                </div>
+
                                 <hr>
                                 
 			</div>

@@ -7,12 +7,18 @@ class Port extends Model {
 	protected $fillable = [
             'name',
             'port_number',
-            'notes'  
+            'notes',
+            'mgmt_ip'
 	];
     
     public function module()
     {
        return $this->belongsTo('App\Module');
+    }
+    
+    public function nagiosHostData()
+    {
+        return $this->hasOne('App\NagiosHost', 'address', 'mgmt_ip');
     }
 
 }

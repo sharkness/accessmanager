@@ -9,6 +9,8 @@ use App\Node;
 use App\Module;
 use App\Port;
 use App\Http\Requests\CreatePortRequest;
+use App\NagiosHost;
+use App\NagiosHoststatus;
 
 class PortsController extends Controller {
     
@@ -63,7 +65,17 @@ class PortsController extends Controller {
 	 */
 	public function show(Node $node, Module $module, Port $port)
 	{
-	    return view('nodes.modules.ports.show')->with('node', $node)->with('module', $module)->with('port', $port);
+            $nagiosHostData = $port->nagiosHostData;
+            
+            if( ! is_null($nagiosHostData))
+            {
+                $nagiosHostStatus = NagiosHoststatus::where('host_object_id', '=', $nagiosHostData->host_object_id)->first();
+                return view('nodes.modules.ports.show')->with('node', $node)->with('module', $module)->with('port', $port)->with('nagiosHostData', $nagiosHostData)->with('nagiosHostStatus', $nagiosHostStatus);
+            }
+            elseif ( is_null($nagiosHostData))
+            {
+        	    return view('nodes.modules.ports.show')->with('node', $node)->with('module', $module)->with('port', $port);
+            }         
 	}
 
 	/**
