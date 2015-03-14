@@ -22,7 +22,11 @@
 </div>
 <div class="form-group">
    {!! Form::label('model_number', 'Model: ') !!}
-   {!! Form::select('model_number', ['ICX6610' => 'ICX6610', 'SX800' => 'SX800'], 'SX800') !!}
+    @if( isset($node->model_number))
+        {!! Form::select('model_number', ['ICX6610' => 'ICX6610', 'SX800' => 'SX800'], $node->model_number) !!}
+    @else
+        {!! Form::select('model_number', ['ICX6610' => 'ICX6610', 'SX800' => 'SX800'], 'SX800') !!}
+    @endif
 </div>
 <div class="form-group">
    {!! Form::label('host_object_id', 'Nagios host_object_id: ') !!}
