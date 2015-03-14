@@ -65,13 +65,14 @@ class NodesController extends Controller {
 	public function show(Node $node)
 	{
             $modules = $node->modules()->get();
-            if ($node->host_object_id == 0)
+            $nagiosHostData = $node->nagiosHostData;
+            if( ! is_null($nagiosHostData))
             {
-                return view('nodes.show')->with('node', $node)->with('modules', $modules);               
-            } else {
-                $nagiosHostData = $node->nagiosHostData;
                 $nagiosHostStatus = NagiosHoststatus::where('host_object_id', '=', $nagiosHostData->host_object_id)->first();
-                return view('nodes.show')->with('node', $node)->with('modules', $modules)->with('nagiosHostData', $nagiosHostData)->with('nagiosHostStatus', $nagiosHostStatus);                
+                return view('nodes.show')->with('node', $node)->with('modules', $modules)->with('nagiosHostData', $nagiosHostData)->with('nagiosHostStatus', $nagiosHostStatus);
+            } elseif ( is_null($nagiosHostData))
+            {
+                return view('nodes.show')->with('node', $node)->with('modules', $modules);
             }
 	}
 
