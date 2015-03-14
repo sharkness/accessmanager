@@ -1,0 +1,11 @@
+.goatCheckmark {
+    color: green;
+    cursor: pointer;
+}
+.goatCloseX {
+    color: red;
+    cursor: pointer;
+}
+.goatModalButton {
+    width: 100%;
+}

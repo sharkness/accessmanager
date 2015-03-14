@@ -30,6 +30,7 @@
                                         <th>Location</th>
                                         <th>Model</th>
                                         <th nowrap>Management IP</th>
+                                        <th>Monitored</th>
                                         <th>Notes</th>
                                         <th>Delete</th>
                                     </tr>
@@ -39,9 +40,68 @@
                                             <td nowrap>{{ $node->location }}</td>
                                             <td>{{ $node->model_number }}</td>
                                             <td>{{ $node->mgmt_ip }}</td>
+                                            
+                                            @if ($node->is_monitored == 0)
+                                                <td>
+                                                    <!-- Button trigger modal -->
+                                                    <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#monitorIsOff">
+                                                      Monitoring is Off
+                                                    </button> -->
+                                                   <i class="fa fa-times-circle goatCloseX" data-toggle="modal" data-target="#monitorIsOff"></i>
+                                                   
+                                                    <!-- Modal to Turn Monitoring ON -->
+                                                    <div class="modal fade" id="monitorIsOff" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                      <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                          <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="myModalLabel">Monitoring is currently OFF</h4>
+                                                          </div>
+                                                          <div class="modal-body">
+                                                            {!! Form::model($node, ['route' => ['nodes.turnMonitoringOn', $node->id], 'method' => 'post']) !!}
+                                                            {!! Form::button('Turn On Monitoring for ' . $node->name, ['type' => 'submit', 'class' => 'btn btn-success goatModalButton'] ) !!}
+                                                            {!! Form::close() !!}    
+                                                          </div>
+                                                          <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>                            
+                                                    
+                                                </td>
+                                            @elseif ($node->is_monitored == 1)
+                                                <td>
+                                                    <!-- Button trigger modal -->
+                                                    <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#monitorIsOn">
+                                                      Monitoring is On
+                                                    </button> -->
+                                                   <i class="fa fa-check-circle goatCheckmark" data-toggle="modal" data-target="#monitorIsOn"></i>
+                                                    <!-- Modal to Turn Monitoring OFF -->
+                                                    <div class="modal fade" id="monitorIsOn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                      <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                          <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="myModalLabel">Monitoring is currently ON</h4>
+                                                          </div>
+                                                          <div class="modal-body">
+                                                            {!! Form::model($node, ['route' => ['nodes.turnMonitoringOff', $node->id], 'method' => 'post']) !!}
+                                                            {!! Form::button('Turn Off Monitoring for ' . $node->name, ['type' => 'submit', 'class' => 'btn btn-danger goatModalButton'] ) !!}
+                                                            {!! Form::close() !!} 
+                                                          </div>
+                                                          <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    
+                                                </td>
+                                            @endif
+                                            
                                             <td>{{ $node->notes }}</td>
                                             <td>
-                                                <!-- {!! Form::model($node, ['route' => ['nodes.destroy', $node->id], 'method' => 'delete' ]) !!} -->
                                                 {!! Form::model($node, ['route' => ['nodes.destroy', $node->id], 'method' => 'delete', 'onsubmit' => 'ConfirmDelete()']) !!}
                                                 {!! Form::button('delete', ['type' => 'submit', 'class' => 'btn btn-primary btn-xs'] ) !!}
                                                 {!! Form::close() !!}    
@@ -50,6 +110,9 @@
                                     @endforeach
                                 </table>
                             @endif
+                            
+
+                                                            
 			</div>
 		</div>
 	</div>

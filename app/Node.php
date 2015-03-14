@@ -10,7 +10,8 @@ class Node extends Model {
         'mgmt_ip',
         'model_number',
         'notes',
-        'host_object_id'
+        'host_object_id',
+        'is_monitored'
     ];
     
     /**

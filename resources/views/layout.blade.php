@@ -6,6 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Goldfield Telecom ONT Manager</title>
 
+    <!-- Goat's Custom CSS -->
+    <link href="/css/goat.css" rel="stylesheet">
 
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">

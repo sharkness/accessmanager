@@ -110,5 +110,20 @@ class NodesController extends Controller {
             $node->delete();
             return redirect('nodes');
 	}
+    
+	public function turnMonitoringOn(Node $node)
+	{
+            $node->is_monitored = 1;
+            $node->save();
+            return redirect('nodes');
+	}
+
+	public function turnMonitoringOff(Node $node)
+	{
+            $node->is_monitored = 0;
+            $node->save();
+            return redirect('nodes');
+	}
+    
 
 }
