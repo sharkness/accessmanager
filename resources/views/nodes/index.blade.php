@@ -20,6 +20,10 @@
                         </div>
 
 			<div class="panel-body">
+                            @if ( ! count($nodes))
+                                <h4>There are no access switches here.</h4>
+                                    You should {!! link_to_route('nodes.create', 'add an access switch') !!}.
+                            @elseif ( count($nodes))
                                 <table class="table table-hover">
                                     <tr>
                                         <th>Node Name</th>
@@ -45,6 +49,7 @@
                                         </tr>
                                     @endforeach
                                 </table>
+                            @endif
 			</div>
 		</div>
 	</div>
