@@ -126,6 +126,20 @@ class PortsController extends Controller {
             $port->save();
             return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
 	}
+
+	public function activatePort(Node $node, Module $module, Port $port)
+	{
+            $port->is_active = 1;
+            $port->save();
+            return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
+	}
+
+	public function deactivatePort(Node $node, Module $module, Port $port)
+	{
+            $port->is_active = 0;
+            $port->save();
+            return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
+	}
     
 
 }

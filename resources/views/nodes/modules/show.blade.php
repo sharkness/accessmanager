@@ -41,6 +41,7 @@
                                 <table class="table table-hover">
                                     <tr>
                                         <th>Port Name</th>
+                                        <th>Active</th>
                                         <th>Port Number</th>
                                         <th>Management IP</th>
                                         <th>Monitored</th>
@@ -50,17 +51,64 @@
                                     @foreach ($ports as $port)
                                         <tr>
                                             <td>{!! link_to_route('nodes.modules.ports.show', $port->name, [$node->id, $module->id, $port->id]) !!}</td>
+
+<!-- ========== START PORT ACTIVATION ========== -->                                                                                        
+                                            @if ($port->is_active == 0)
+                                                <td>
+                                                   <i class="fa fa-times-circle goatCloseX" data-toggle="modal" data-target="#portIsNotActive{{ $port->id }}"></i>                                                   
+                                                    <!-- ACTIVATE Port -->
+                                                    <div class="modal fade" id="portIsNotActive{{ $port->id }}" tabindex="-1" role="dialog" aria-labelledby="activatePort{{ $port->id }}" aria-hidden="true">
+                                                      <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                          <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="activatePort{{ $port->id }}">Port is Not Active</h4>
+                                                          </div>
+                                                          <div class="modal-body">
+                                                            {!! Form::model($port, ['route' => ['nodes.modules.ports.activatePort', $node->id, $module->id, $port->id], 'method' => 'post']) !!}
+                                                            {!! Form::button('Activate ' . $port->name, ['type' => 'submit', 'class' => 'btn btn-success goatModalButton'] ) !!}
+                                                            {!! Form::close() !!}    
+                                                          </div>
+                                                          <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>                                                                                
+                                                </td>
+                                            @elseif ($port->is_active == 1)
+                                                <td>
+                                                   <i class="fa fa-check-circle goatCheckmark" data-toggle="modal" data-target="#portIsActive{{ $port->id }}"></i>
+                                                    <!-- DEACTIVATE Port -->
+                                                    <div class="modal fade" id="portIsActive{{ $port->id }}" tabindex="-1" role="dialog" aria-labelledby="deactivatePort{{ $port->id }}" aria-hidden="true">
+                                                      <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                          <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="deactivatePort{{ $port->id }}">Port Is Active</h4>
+                                                          </div>
+                                                          <div class="modal-body">
+                                                            {!! Form::model($node, ['route' => ['nodes.modules.ports.deactivatePort', $node->id, $module->id, $port->id], 'method' => 'post']) !!}
+                                                            {!! Form::button('Deactivate ' . $port->name, ['type' => 'submit', 'class' => 'btn btn-danger goatModalButton'] ) !!}
+                                                            {!! Form::close() !!} 
+                                                          </div>
+                                                          <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>                                                    
+                                                </td>
+                                            @endif
+<!-- ========== END PORT ACTIVATION ========== -->                                            
+                                            
                                             <td>{{ $port->port_number }}</td>
                                             <td>{{ $port->mgmt_ip }}</td>
-                                            
+
+<!-- ========== START MONITORING ON/OFF ========== -->                                                                                                                                    
                                             @if ($port->is_monitored == 0)
                                                 <td>
-                                                    <!-- Button trigger modal -->
-                                                    <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#monitorIsOff">
-                                                      Monitoring is Off
-                                                    </button> -->
-                                                   <i class="fa fa-times-circle goatCloseX" data-toggle="modal" data-target="#monitorIsOff{{ $port->id }}"></i>
-                                                   
+                                                   <i class="fa fa-times-circle goatCloseX" data-toggle="modal" data-target="#monitorIsOff{{ $port->id }}"></i>                                                   
                                                     <!-- Modal to Turn Monitoring ON -->
                                                     <div class="modal fade" id="monitorIsOff{{ $port->id }}" tabindex="-1" role="dialog" aria-labelledby="turnMonitoringOn{{ $port->id }}" aria-hidden="true">
                                                       <div class="modal-dialog">
@@ -79,15 +127,10 @@
                                                           </div>
                                                         </div>
                                                       </div>
-                                                    </div>                            
-                                                    
+                                                    </div>                                                                                
                                                 </td>
                                             @elseif ($port->is_monitored == 1)
                                                 <td>
-                                                    <!-- Button trigger modal -->
-                                                    <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#monitorIsOn">
-                                                      Monitoring is On
-                                                    </button> -->
                                                    <i class="fa fa-check-circle goatCheckmark" data-toggle="modal" data-target="#monitorIsOn{{ $port->id }}"></i>
                                                     <!-- Modal to Turn Monitoring OFF -->
                                                     <div class="modal fade" id="monitorIsOn{{ $port->id }}" tabindex="-1" role="dialog" aria-labelledby="turnMonitoringOff{{ $port->id }}" aria-hidden="true">
@@ -107,10 +150,10 @@
                                                           </div>
                                                         </div>
                                                       </div>
-                                                    </div>
-                                                    
+                                                    </div>                                                    
                                                 </td>
                                             @endif
+<!-- ========== END MONITORING ON/OFF ========== -->                                                                                                                                    
                                             
                                             <td>{{ $port->notes }}</td>
                                             <td>
