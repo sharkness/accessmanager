@@ -112,5 +112,20 @@ class PortsController extends Controller {
             $port->delete();
             return redirect()->route('nodes.modules.ports.show', ['node' => $node->id, 'module' => $module->id]);
 	}
+    
+	public function turnMonitoringOn(Node $node, Module $module, Port $port)
+	{
+            $port->is_monitored = 1;
+            $port->save();
+            return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
+	}
+
+	public function turnMonitoringOff(Node $node, Module $module, Port $port)
+	{
+            $port->is_monitored = 0;
+            $port->save();
+            return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
+	}
+    
 
 }

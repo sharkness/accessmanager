@@ -43,6 +43,7 @@
                                         <th>Port Name</th>
                                         <th>Port Number</th>
                                         <th>Management IP</th>
+                                        <th>Monitored</th>
                                         <th>Notes</th>
                                         <th>Delete</th>
                                     </tr>
@@ -51,6 +52,66 @@
                                             <td>{!! link_to_route('nodes.modules.ports.show', $port->name, [$node->id, $module->id, $port->id]) !!}</td>
                                             <td>{{ $port->port_number }}</td>
                                             <td>{{ $port->mgmt_ip }}</td>
+                                            
+                                            @if ($port->is_monitored == 0)
+                                                <td>
+                                                    <!-- Button trigger modal -->
+                                                    <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#monitorIsOff">
+                                                      Monitoring is Off
+                                                    </button> -->
+                                                   <i class="fa fa-times-circle goatCloseX" data-toggle="modal" data-target="#monitorIsOff{{ $port->id }}"></i>
+                                                   
+                                                    <!-- Modal to Turn Monitoring ON -->
+                                                    <div class="modal fade" id="monitorIsOff{{ $port->id }}" tabindex="-1" role="dialog" aria-labelledby="turnMonitoringOn{{ $port->id }}" aria-hidden="true">
+                                                      <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                          <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="turnMonitoringOn{{ $port->id }}">Monitoring is currently OFF</h4>
+                                                          </div>
+                                                          <div class="modal-body">
+                                                            {!! Form::model($port, ['route' => ['nodes.modules.ports.turnMonitoringOn', $node->id, $module->id, $port->id], 'method' => 'post']) !!}
+                                                            {!! Form::button('Turn On Monitoring for ' . $port->name, ['type' => 'submit', 'class' => 'btn btn-success goatModalButton'] ) !!}
+                                                            {!! Form::close() !!}    
+                                                          </div>
+                                                          <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>                            
+                                                    
+                                                </td>
+                                            @elseif ($port->is_monitored == 1)
+                                                <td>
+                                                    <!-- Button trigger modal -->
+                                                    <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#monitorIsOn">
+                                                      Monitoring is On
+                                                    </button> -->
+                                                   <i class="fa fa-check-circle goatCheckmark" data-toggle="modal" data-target="#monitorIsOn{{ $port->id }}"></i>
+                                                    <!-- Modal to Turn Monitoring OFF -->
+                                                    <div class="modal fade" id="monitorIsOn{{ $port->id }}" tabindex="-1" role="dialog" aria-labelledby="turnMonitoringOff{{ $port->id }}" aria-hidden="true">
+                                                      <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                          <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="turnMonitoringOff{{ $port->id }}">Monitoring is currently ON</h4>
+                                                          </div>
+                                                          <div class="modal-body">
+                                                            {!! Form::model($node, ['route' => ['nodes.modules.ports.turnMonitoringOff', $node->id, $module->id, $port->id], 'method' => 'post']) !!}
+                                                            {!! Form::button('Turn Off Monitoring for ' . $port->name, ['type' => 'submit', 'class' => 'btn btn-danger goatModalButton'] ) !!}
+                                                            {!! Form::close() !!} 
+                                                          </div>
+                                                          <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    
+                                                </td>
+                                            @endif
+                                            
                                             <td>{{ $port->notes }}</td>
                                             <td>
                                                 {!! Form::model($port, ['route' => ['nodes.modules.ports.destroy', $node->id, $module->id, $port->id], 'method' => 'delete' ]) !!}

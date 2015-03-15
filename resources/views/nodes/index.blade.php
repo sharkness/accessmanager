@@ -47,15 +47,15 @@
                                                     <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#monitorIsOff">
                                                       Monitoring is Off
                                                     </button> -->
-                                                   <i class="fa fa-times-circle goatCloseX" data-toggle="modal" data-target="#monitorIsOff"></i>
+                                                   <i class="fa fa-times-circle goatCloseX" data-toggle="modal" data-target="#monitorIsOff{{ $node->id }}"></i>
                                                    
                                                     <!-- Modal to Turn Monitoring ON -->
-                                                    <div class="modal fade" id="monitorIsOff" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="monitorIsOff{{ $node->id }}" tabindex="-1" role="dialog" aria-labelledby="turnMonitoringOn{{ $node->id }}" aria-hidden="true">
                                                       <div class="modal-dialog">
                                                         <div class="modal-content">
                                                           <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                            <h4 class="modal-title" id="myModalLabel">Monitoring is currently OFF</h4>
+                                                            <h4 class="modal-title" id="turnMonitoringOn{{ $node->id }}">Monitoring is currently OFF</h4>
                                                           </div>
                                                           <div class="modal-body">
                                                             {!! Form::model($node, ['route' => ['nodes.turnMonitoringOn', $node->id], 'method' => 'post']) !!}
@@ -76,14 +76,14 @@
                                                     <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#monitorIsOn">
                                                       Monitoring is On
                                                     </button> -->
-                                                   <i class="fa fa-check-circle goatCheckmark" data-toggle="modal" data-target="#monitorIsOn"></i>
+                                                   <i class="fa fa-check-circle goatCheckmark" data-toggle="modal" data-target="#monitorIsOn{{ $node->id }}"></i>
                                                     <!-- Modal to Turn Monitoring OFF -->
-                                                    <div class="modal fade" id="monitorIsOn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="monitorIsOn{{ $node->id }}" tabindex="-1" role="dialog" aria-labelledby="turnMonitoringOff{{ $node->id }}" aria-hidden="true">
                                                       <div class="modal-dialog">
                                                         <div class="modal-content">
                                                           <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                            <h4 class="modal-title" id="myModalLabel">Monitoring is currently ON</h4>
+                                                            <h4 class="modal-title" id="turnMonitoringOff{{ $node->id }}">Monitoring is currently ON</h4>
                                                           </div>
                                                           <div class="modal-body">
                                                             {!! Form::model($node, ['route' => ['nodes.turnMonitoringOff', $node->id], 'method' => 'post']) !!}

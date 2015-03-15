@@ -8,7 +8,8 @@ class Port extends Model {
             'name',
             'port_number',
             'notes',
-            'mgmt_ip'
+            'mgmt_ip',
+            'is_monitored'
 	];
     
     public function module()

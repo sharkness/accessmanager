@@ -22,8 +22,12 @@ Route::get('dashboard', 'DashboardController@index');
 Route::resource('nodes', 'NodesController');
 Route::resource('nodes.modules', 'ModulesController');
 Route::resource('nodes.modules.ports', 'PortsController');
+
 Route::post('nodes/{nodes}/monitorOn', ['as' => 'nodes.turnMonitoringOn', 'uses' => 'NodesController@turnMonitoringOn']);
 Route::post('nodes/{nodes}/monitorOff', ['as' => 'nodes.turnMonitoringOff', 'uses' => 'NodesController@turnMonitoringOff']);
+
+Route::post('nodes/{nodes}/modules/{modules}/ports/{ports}/monitorOn', ['as' => 'nodes.modules.ports.turnMonitoringOn', 'uses' => 'PortsController@turnMonitoringOn']);
+Route::post('nodes/{nodes}/modules/{modules}/ports/{ports}/monitorOff', ['as' => 'nodes.modules.ports.turnMonitoringOff', 'uses' => 'PortsController@turnMonitoringOff']);
 
 Route::get('monitoring', 'NagiosController@index');
 Route::get('monitoring/{host_object_id}', 'NagiosController@show');
