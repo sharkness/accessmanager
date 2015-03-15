@@ -67,10 +67,21 @@
                         <a href="/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> AccessNetwork <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#accessNetworkMenu"><i class="fa fa-fw fa-arrows-v"></i> AccessNetwork <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="accessNetworkMenu" class="collapse">
                             <li>
                                 <a href="/nodes">View Access Swithes</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#dhcpMenu"><i class="fa fa-fw fa-arrows-v"></i> DHCP <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="dhcpMenu" class="collapse">
+                            <li>
+                                <a href="/dhcp">DHCP Server</a>
+                            </li>
+                            <li>
+                                <a href="/logs">DHCP Logs</a>
                             </li>
                         </ul>
                     </li>
