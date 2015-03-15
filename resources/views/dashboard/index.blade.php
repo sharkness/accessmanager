@@ -17,11 +17,21 @@
 			<div class="panel-body">
                                 {!! link_to_route('nodes.index', 'Nodes', null, [
                                     'type' => 'button',
-                                    'id' => 'myButton',
+                                    'id' => 'nodesButton',
                                     'data-loading-text' => 'Loading...',
                                     'class' => 'btn btn-primary',
                                     'autocomplete' => 'off'
                                 ]) !!}
+
+                                {!! link_to_route('logs.index', 'Syslog', null, [
+                                    'type' => 'button',
+                                    'id' => 'logsButton',
+                                    'data-loading-text' => 'Loading...',
+                                    'class' => 'btn btn-primary',
+                                    'autocomplete' => 'off'
+                                ]) !!}
+
+
 			</div>
 		</div>
 	</div>

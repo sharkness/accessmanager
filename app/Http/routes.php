@@ -32,7 +32,8 @@ Route::post('nodes/{nodes}/modules/{modules}/ports/{ports}/monitorOff', ['as' =>
 Route::get('monitoring', 'NagiosController@index');
 Route::get('monitoring/{host_object_id}', 'NagiosController@show');
 
-Route::get('logs', 'LogsController@index');
+Route::get('logs', ['as' => 'logs.index', 'uses' => 'LogsController@index']);
+
 Route::get('dhcp', 'DhcpController@index');
 Route::get('tftp', 'TftpController@index');
 

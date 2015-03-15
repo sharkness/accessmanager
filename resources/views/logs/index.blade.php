@@ -14,13 +14,30 @@
                                     </a>
                                 </li>
                                 <li class="active">
-                                    <i class="fa fa-cloud"></i> AccessNodes
+                                    <i class="fa fa-book"></i> DHCP Logs
                                 </li>
                             </ol>
                         </div>
 
 			<div class="panel-body">
-                                ...Logs
+
+                            <h4><i class="fa fa-book"></i> Syslog Events</h4>
+                            Below are all of the <strong>DHCP</strong> syslog messages.
+                            <hr>
+
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th>Recieved At</th>
+                                        <th>Message</th>
+                                    </tr>
+                                    @foreach ($logs as $log)
+                                    <tr>
+                                        <td nowrap>{{ $log->ReceivedAt }}</td>
+                                        <td>{{ $log->Message }}</td>
+                                    </tr>
+                                    @endforeach
+                                </table>
+
 			</div>
 		</div>
 	</div>

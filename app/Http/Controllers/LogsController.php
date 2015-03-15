@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Logs;
 
 class LogsController extends Controller {
     
@@ -20,7 +21,8 @@ class LogsController extends Controller {
 
     public function index()
     {
-        return view('logs.index');
+        $logs = Logs::where('SysLogTag', 'like', 'dhcpd%')->get();
+        return view('logs.index')->with('logs', $logs);
     }
 
 
