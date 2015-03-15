@@ -67,6 +67,14 @@
                         <a href="/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> AccessNetwork <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="/nodes">View Access Swithes</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="/monitoring"><i class="fa fa-fw fa-binoculars"></i> Monitoring</a>
                     </li>
                     <li>
@@ -80,17 +88,6 @@
                     </li>
                     <li>
                         <a href="/support"><i class="fa fa-fw fa-support"></i> Support</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> AccessNetwork <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="/nodes">View Access Nodes</a>
-                            </li>
-                            <li>
-                                <a href="/nodes/create">Create Access Node</a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
             </div>
