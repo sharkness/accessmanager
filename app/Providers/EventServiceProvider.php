@@ -15,6 +15,9 @@ use App\Handlers\Events\AddNagiosEntry;
 use App\Events\MonitoringWasTurnedOff;
 use App\Handlers\Events\DeleteNagiosEntry;
 
+use App\Events\CardWasAddedToSwitch;
+use App\Handlers\Events\CreatePortsForCard;
+
 class EventServiceProvider extends ServiceProvider {
 
 	/**
@@ -41,6 +44,10 @@ class EventServiceProvider extends ServiceProvider {
     
         MonitoringWasTurnedOff::class => [
             DeleteNagiosEntry::class,
+        ],
+    
+        CardWasAddedToSwitch::class => [
+            CreatePortsForCard::class,
         ],
     
 	];

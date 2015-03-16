@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Node;
 use App\Module;
 use App\Http\Requests\CreateModuleRequest;
+use App\Events\CardWasAddedToSwitch;
 
 class ModulesController extends Controller {
     
@@ -52,8 +53,8 @@ class ModulesController extends Controller {
             $module = new Module($request->all());
             Node::find($node->id)->modules()->save($module);
             $module->save();
+            \Event::fire(new CardWasAddedToSwitch($module->id, $module->name, $module->slot_number, $module->port_count));
             return redirect()->route('nodes.modules.index', ['node' => $node->id]);
-            
 	}
 
 	/**

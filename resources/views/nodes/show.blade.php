@@ -109,7 +109,7 @@
                                                         <th>Notes</th>
                                                         <th>Delete</th>
                                                     </tr>
-                                                    @foreach ($node->ports as $port)
+                                                    @foreach ($module->ports as $port)
                                                         <tr>
                                                             <td>{!! link_to_route('nodes.modules.ports.show', $port->name, [$node->id, $module->id, $port->id]) !!}</td>
                                             
