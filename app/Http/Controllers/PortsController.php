@@ -131,7 +131,8 @@ class PortsController extends Controller {
             $port->is_monitored = 0;
             $port->save();
             \Event::fire(new MonitoringWasTurnedOff($port->name, $port->mgmt_ip));
-            return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
+            // return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
+            return redirect()->route('nodes.show', ['node' => $node->id]);
 	}
 
 	public function activatePort(Node $node, Module $module, Port $port)
@@ -139,7 +140,8 @@ class PortsController extends Controller {
             $port->is_active = 1;
             $port->save();
             \Event::fire(new PortWasActivated($port->id, $port->name, $port->mgmt_ip));
-            return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
+            // return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
+            return redirect()->route('nodes.show', ['node' => $node->id]);
 	}
 
 	public function deactivatePort(Node $node, Module $module, Port $port)
@@ -147,7 +149,8 @@ class PortsController extends Controller {
             $port->is_active = 0;
             $port->save();
             \Event::fire(new PortWasDeactivated($port->id, $port->name, $port->mgmt_ip));
-            return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
+            // return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
+            return redirect()->route('nodes.show', ['node' => $node->id]);
 	}
     
 
