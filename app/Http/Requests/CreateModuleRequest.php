@@ -22,9 +22,9 @@ class CreateModuleRequest extends Request {
 	public function rules()
 	{
 		return [
-                    'name' => 'required|min:2',
-                    'slot_number' => 'required|max:2',
-                    'port_count' => 'required|max:2'
+                    'name' => 'required|min:2|alpha-dash',
+                    'slot_number' => 'required|digits_between:1,16',
+                    'port_count' => 'required|digits_between:1,48'
 		];
 	}
 

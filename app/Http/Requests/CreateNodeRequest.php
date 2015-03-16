@@ -22,10 +22,10 @@ class CreateNodeRequest extends Request {
 	public function rules()
 	{
     		return [
-                        'name' => 'required|min:2',
-                        'location' => 'required|min:2',
+                        'name' => 'required|min:2|alpha-dash',
+                        'location' => 'required|min:2|alpha-dash',
                         'mgmt_ip' => 'required|ip',
-                        'model_number' => 'required'
+                        'model_number' => 'required|alpha-dash'
                     ];
 	}
 

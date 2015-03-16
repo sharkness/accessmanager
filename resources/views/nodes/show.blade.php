@@ -178,11 +178,17 @@
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                             <h4 class="modal-title" id="turnMonitoringOf{{ $port->id }}">Monitoring is currently OFF</h4>
                                                                           </div>
+                                                                          
                                                                           <div class="modal-body">
                                                                             {!! Form::model($port, ['route' => ['nodes.modules.ports.turnMonitoringOn', $node->id, $module->id, $port->id], 'method' => 'post']) !!}
+                                                                           <div class="form-group">
+                                                                              {!! Form::label('mgmt_ip', 'Management IP: ') !!}
+                                                                              {!! Form::text('mgmt_ip', null, ['class' => 'form-control']) !!}
+                                                                           </div>
                                                                             {!! Form::button('Turn On Monitoring for ' . $port->name, ['type' => 'submit', 'class' => 'btn btn-success goatModalButton'] ) !!}
                                                                             {!! Form::close() !!}    
                                                                           </div>
+                                                                          
                                                                           <div class="modal-footer">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                                                           </div>
@@ -201,11 +207,14 @@
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                             <h4 class="modal-title" id="myModalLabel">Monitoring is currently ON</h4>
                                                                           </div>
+                                                                          
                                                                           <div class="modal-body">
                                                                             {!! Form::model($node, ['route' => ['nodes.modules.ports.turnMonitoringOff', $node->id, $module->id, $port->id], 'method' => 'post']) !!}
+                                                                             {!! Form::hidden('mgmt_ip', $port->mgmt_ip) !!}
                                                                             {!! Form::button('Turn Off Monitoring for ' . $port->name, ['type' => 'submit', 'class' => 'btn btn-danger goatModalButton'] ) !!}
                                                                             {!! Form::close() !!} 
                                                                           </div>
+                                                                          
                                                                           <div class="modal-footer">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                                                           </div>

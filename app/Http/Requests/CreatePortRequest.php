@@ -22,8 +22,8 @@ class CreatePortRequest extends Request {
 	public function rules()
 	{
 		return [
-                    'name' => 'required|min:2',
-                    'port_number' => 'required|max:2'
+                    'name' => 'required|min:2|alpha-dash',
+                    'port_number' => 'required|digits_between:1,48'
 		];
 	}
 

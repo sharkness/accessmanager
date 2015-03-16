@@ -22,8 +22,7 @@ class ChangeMonitoringRequest extends Request {
 	public function rules()
 	{
 		return [
-                    // 'mgmt_ip' => 'required|ip',
-                    // 'is_monitored' => 'required|integer|max:1'
+                    'mgmt_ip' => 'required|ip'
 		];
 	}
 
