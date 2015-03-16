@@ -111,6 +111,14 @@
 
                 <!-- Page Heading -->
 
+    @if (Session::has('flash_message'))
+        <div class="alert alert-success">       
+           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+           {{ Session::get('flash_message') }}
+        </div>
+    @endif
+                
+
 @yield('content')
 
             </div>
@@ -139,6 +147,10 @@
         <script src="/js/app.js"></script>
         <!-- Script to make buttons say "Loading..." when they are clicked -->
         <script src="/js/button-loading.js"></script>
+        
+        <script>$('div.alert').not('.alert-important').delay(2000).slideUp(1200);</script>
+    
+        
     
 </body>
 </html>

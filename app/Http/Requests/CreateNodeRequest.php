@@ -23,7 +23,7 @@ class CreateNodeRequest extends Request {
 	{
     		return [
                         'name' => 'required|min:2|alpha-dash',
-                        'location' => 'required|min:2|alpha-dash',
+                        'location' => 'required|min:2',
                         'mgmt_ip' => 'required|ip',
                         'model_number' => 'required|alpha-dash'
                     ];

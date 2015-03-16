@@ -118,6 +118,7 @@ class NodesController extends Controller {
 	{
             $node->is_monitored = 1;
             $node->save();
+            \Session::flash('flash_message', 'Monitoring for switch ' . $node->name . ' has been turned on!!');
             \Event::fire(new MonitoringWasTurnedOn($node->name, $node->mgmt_ip));
             return redirect('nodes');
 	}
@@ -126,6 +127,7 @@ class NodesController extends Controller {
 	{
             $node->is_monitored = 0;
             $node->save();
+            \Session::flash('flash_message', 'Monitoring for switch ' . $node->name . ' has been turned off!!');
             \Event::fire(new MonitoringWasTurnedOff($node->name, $node->mgmt_ip));
             return redirect('nodes');
 	}

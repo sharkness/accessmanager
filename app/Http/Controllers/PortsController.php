@@ -123,6 +123,7 @@ class PortsController extends Controller {
 	{
             $port->is_monitored = 1;
             $port->update($request->all());
+            \Session::flash('flash_message', 'Monitoring for port ' . $port->name . ' has been turned on!!');
             \Event::fire(new MonitoringWasTurnedOn($port->name, $port->mgmt_ip));
             // return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
             return redirect()->route('nodes.show', ['node' => $node->id]);
@@ -132,6 +133,7 @@ class PortsController extends Controller {
 	{
             $port->is_monitored = 0;
             $port->update($request->all());
+            \Session::flash('flash_message', 'Monitoring for port ' . $port->name . ' has been turned off!!');
             \Event::fire(new MonitoringWasTurnedOff($port->name, $port->mgmt_ip));
             // return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
             return redirect()->route('nodes.show', ['node' => $node->id]);
@@ -141,6 +143,7 @@ class PortsController extends Controller {
 	{
             $port->is_active = 1;
             $port->update($request->all());
+            \Session::flash('flash_message', 'Port ' . $port->name . ' has been activated!!');
             \Event::fire(new PortWasActivated($port->id, $port->name, $port->mgmt_ip));
             // return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
             return redirect()->route('nodes.show', ['node' => $node->id]);
@@ -150,6 +153,7 @@ class PortsController extends Controller {
 	{
             $port->is_active = 0;
             $port->update($request->all());
+            \Session::flash('flash_message', 'Port ' . $port->name . ' has been deactivated!!');
             \Event::fire(new PortWasDeactivated($port->id, $port->name, $port->mgmt_ip));
             // return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
             return redirect()->route('nodes.show', ['node' => $node->id]);
