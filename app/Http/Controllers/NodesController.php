@@ -9,6 +9,8 @@ use App\Node;
 use App\Http\Requests\CreateNodeRequest;
 use App\NagiosHost;
 use App\NagiosHoststatus;
+use App\Events\MonitoringWasTurnedOn;
+use App\Events\MonitoringWasTurnedOff;
 
 class NodesController extends Controller {
     
@@ -115,6 +117,7 @@ class NodesController extends Controller {
 	{
             $node->is_monitored = 1;
             $node->save();
+            \Event::fire(new MonitoringWasTurnedOn($node->name, $node->mgmt_ip));
             return redirect('nodes');
 	}
 
@@ -122,6 +125,7 @@ class NodesController extends Controller {
 	{
             $node->is_monitored = 0;
             $node->save();
+            \Event::fire(new MonitoringWasTurnedOff($node->name, $node->mgmt_ip));
             return redirect('nodes');
 	}
     
