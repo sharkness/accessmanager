@@ -3,6 +3,18 @@
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
+use App\Events\PortWasActivated;
+use App\Handlers\Events\AddDhcpEntry;
+
+use App\Events\PortWasDeactivated;
+use App\Handlers\Events\DeleteDhcpEntry;
+
+use App\Events\MonitoringWasTurnedOn;
+use App\Handlers\Events\AddNagiosEntry;
+
+use App\Events\MonitoringWasTurnedOff;
+use App\Handlers\Events\DeleteNagiosEntry;
+
 class EventServiceProvider extends ServiceProvider {
 
 	/**
@@ -14,6 +26,23 @@ class EventServiceProvider extends ServiceProvider {
 		'event.name' => [
 			'EventListener',
 		],
+        
+        PortWasActivated::class => [
+            AddDhcpEntry::class,
+        ],
+    
+        PortWasDeactivated::class => [
+            DeleteDhcpEntry::class,
+        ],
+
+        MonitoringWasTurnedOn::class => [
+            AddNagiosEntry::class,
+        ],
+    
+        MonitoringWasTurnedOff::class => [
+            DeleteNagiosEntry::class,
+        ],
+    
 	];
 
 	/**

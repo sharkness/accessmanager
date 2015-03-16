@@ -11,6 +11,10 @@ use App\Port;
 use App\Http\Requests\CreatePortRequest;
 use App\NagiosHost;
 use App\NagiosHoststatus;
+use App\Events\PortWasActivated;
+use App\Events\PortWasDeactivated;
+use App\Events\MonitoringWasTurnedOn;
+use App\Events\MonitoringWasTurnedOff;
 
 class PortsController extends Controller {
     
@@ -117,6 +121,7 @@ class PortsController extends Controller {
 	{
             $port->is_monitored = 1;
             $port->save();
+            \Event::fire(new MonitoringWasTurnedOn($port->name, $port->mgmt_ip));
             return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
 	}
 
@@ -124,6 +129,7 @@ class PortsController extends Controller {
 	{
             $port->is_monitored = 0;
             $port->save();
+            \Event::fire(new MonitoringWasTurnedOff($port->name, $port->mgmt_ip));
             return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
 	}
 
@@ -131,6 +137,7 @@ class PortsController extends Controller {
 	{
             $port->is_active = 1;
             $port->save();
+            \Event::fire(new PortWasActivated($port->id, $port->name, $port->mgmt_ip));
             return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
 	}
 
@@ -138,6 +145,7 @@ class PortsController extends Controller {
 	{
             $port->is_active = 0;
             $port->save();
+            \Event::fire(new PortWasDeactivated($port->id, $port->name, $port->mgmt_ip));
             return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
 	}
     
