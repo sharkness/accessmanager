@@ -70,7 +70,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#accessNetworkMenu"><i class="fa fa-fw fa-arrows-v"></i> AccessNetwork <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="accessNetworkMenu" class="collapse">
                             <li>
-                                <a href="/nodes">View Access Swithes</a>
+                                <a href="/nodes">View Access Switches</a>
                             </li>
                         </ul>
                     </li>

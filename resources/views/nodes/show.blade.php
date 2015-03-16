@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-default">
-			<div class="panel-heading">Viewing node {{ $node->name }}</div>
+			<div class="panel-heading">Viewing Switch {{ $node->name }}</div>
             
                                 <div class="panel-header">
                                     <ol class="breadcrumb">
@@ -15,7 +15,7 @@
                                         </li>
                                         <li class="active">
                                             <a href="/nodes">
-                                                <i class="fa fa-cloud"></i> AccessNodes
+                                                <i class="fa fa-cloud"></i> Access Switches
                                             </a>
                                         </li>
                                         <li class="active">
@@ -26,7 +26,7 @@
             
 
 			<div class="panel-body">
-			    <h4><i class="fa fa-tasks"></i> Node Details [{!! link_to_route('nodes.edit', 'Edit', $node->id) !!}]</h4>
+			    <h4><i class="fa fa-tasks"></i> Switch Details [{!! link_to_route('nodes.edit', 'Edit', $node->id) !!}]</h4>
                                 <div class="row">
                                     <div class="col-md-6">
                                         Name: {{ $node->name }}<br>
@@ -50,7 +50,7 @@
                                 
                                 <hr>
                                 
-                                <h4>Modules in {{ $node->name }}</h4>
+                                <h4>Cards in {{ $node->name }}</h4>
                                 @if (count($modules))
                                 <table class="table table-hover">
                                     <tr>

@@ -15,7 +15,7 @@
                                         </li>
                                         <li class="active">
                                             <a href="/nodes">
-                                                <i class="fa fa-cloud"></i> AccessNodes
+                                                <i class="fa fa-cloud"></i> Access Switches
                                             </a>
                                         </li>
                                         <li class="active">

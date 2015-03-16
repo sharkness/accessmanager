@@ -14,7 +14,7 @@
                                     </a>
                                 </li>
                                 <li class="active">
-                                    <i class="fa fa-cloud"></i> AccessNodes
+                                    <i class="fa fa-cloud"></i> Access Switches
                                 </li>
                             </ol>
                         </div>
@@ -26,7 +26,7 @@
                             @elseif ( count($nodes))
                                 <table class="table table-hover">
                                     <tr>
-                                        <th>Node Name</th>
+                                        <th>Switch Name</th>
                                         <th>Location</th>
                                         <th>Model</th>
                                         <th nowrap>Management IP</th>

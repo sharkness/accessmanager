@@ -15,7 +15,7 @@
                                         </li>
                                         <li class="active">
                                             <a href="/nodes">
-                                                <i class="fa fa-cloud"></i> AccessNodes
+                                                <i class="fa fa-cloud"></i> Access Switches
                                             </a>
                                         </li>
                                         <li class="active">
@@ -24,13 +24,13 @@
                                             </a>
                                         </li>
                                         <li class="active">
-                                            <i class="fa fa-sitemap"></i> Modules
+                                            <i class="fa fa-sitemap"></i> Cards
                                         </li>
                                     </ol>
                                 </div>
 
 			<div class="panel-body">
-                                <h5><i class="fa fa-sitemap"></i> Here are the modules for {{ $node->name }}</h5>
+                                <h5><i class="fa fa-sitemap"></i> Here are the cards in {{ $node->name }}</h5>
                                 <table class="table table-hover">
                                     <tr>
                                         <th>Name</th>

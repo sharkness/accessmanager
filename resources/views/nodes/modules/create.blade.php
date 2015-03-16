@@ -15,7 +15,7 @@
                                         </li>
                                         <li class="active">
                                             <a href="/nodes">
-                                                <i class="fa fa-cloud"></i> AccessNodes
+                                                <i class="fa fa-cloud"></i> Access Switches
                                             </a>
                                         </li>
                                         <li class="active">
@@ -24,13 +24,13 @@
                                             </a>
                                         </li>
                                         <li class="active">
-                                            <i class="fa fa-edit"></i> Add a module to {{ $node->name }}
+                                            <i class="fa fa-edit"></i> Add a card to {{ $node->name }}
                                         </li>
                                     </ol>
                                 </div>
 
 			<div class="panel-body">
-                                <h4>Add a Module</h4>
+                                <h4>Add a Card</h4>
                                 
                                 {!! Form::open([
                                     'route' => ['nodes.modules.store',

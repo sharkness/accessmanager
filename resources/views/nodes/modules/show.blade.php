@@ -15,7 +15,7 @@
                                         </li>
                                         <li class="active">
                                             <a href="/nodes">
-                                                <i class="fa fa-cloud"></i> AccessNodes
+                                                <i class="fa fa-cloud"></i> Access Switches
                                             </a>
                                         </li>
                                         <li class="active">
@@ -30,7 +30,7 @@
                                 </div>
 
 			<div class="panel-body">
-                                <h4><i class="fa fa-sitemap"></i> Module Details [{!! link_to_route('nodes.modules.edit', 'Edit', [$node->id, $module->id]) !!}]</h4>
+                                <h4><i class="fa fa-sitemap"></i> Card Details [{!! link_to_route('nodes.modules.edit', 'Edit', [$node->id, $module->id]) !!}]</h4>
                                 Name: {{ $module->name }}<br>
                                 Port count: {{ $module->port_count }}<br>
                                 Slot number: {{ $module->slot_number }}<br>

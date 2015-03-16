@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-default">
-			<div class="panel-heading">Modules Create Page For node {{ $node->name }} module {{ $module->name}}</div>
+			<div class="panel-heading">Add Port Page For Switch {{ $node->name }} Card {{ $module->name}}</div>
 
 			<div class="panel-body">
                                 <h4>Add a Port</h4>
