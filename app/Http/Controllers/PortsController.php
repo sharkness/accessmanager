@@ -9,6 +9,7 @@ use App\Node;
 use App\Module;
 use App\Port;
 use App\Http\Requests\CreatePortRequest;
+use App\Http\Requests\ChangeMonitoringRequest;
 use App\NagiosHost;
 use App\NagiosHoststatus;
 use App\Events\PortWasActivated;
@@ -117,19 +118,19 @@ class PortsController extends Controller {
             return redirect()->route('nodes.modules.ports.show', ['node' => $node->id, 'module' => $module->id]);
 	}
     
-	public function turnMonitoringOn(Node $node, Module $module, Port $port)
+	public function turnMonitoringOn(Node $node, Module $module, Port $port, ChangeMonitoringRequest $request)
 	{
             $port->is_monitored = 1;
-            $port->save();
+            $port->update($request->all());
             \Event::fire(new MonitoringWasTurnedOn($port->name, $port->mgmt_ip));
             // return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
             return redirect()->route('nodes.show', ['node' => $node->id]);
 	}
 
-	public function turnMonitoringOff(Node $node, Module $module, Port $port)
+	public function turnMonitoringOff(Node $node, Module $module, Port $port, ChangeMonitoringRequest $request)
 	{
             $port->is_monitored = 0;
-            $port->save();
+            $port->update($request->all());
             \Event::fire(new MonitoringWasTurnedOff($port->name, $port->mgmt_ip));
             // return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
             return redirect()->route('nodes.show', ['node' => $node->id]);

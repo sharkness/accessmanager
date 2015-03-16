@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class CreateNodeRequest extends Request {
+class ChangeMonitoringRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -21,12 +21,10 @@ class CreateNodeRequest extends Request {
 	 */
 	public function rules()
 	{
-    		return [
-                        'name' => 'required|min:2',
-                        'location' => 'required|min:2',
-                        'mgmt_ip' => 'required|ip',
-                        'model_number' => 'required'
-                    ];
+		return [
+                    // 'mgmt_ip' => 'required|ip',
+                    // 'is_monitored' => 'required|integer|max:1'
+		];
 	}
 
 }

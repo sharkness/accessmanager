@@ -30,7 +30,10 @@ class DeleteDhcpEntry implements ShouldBeQueued {
 	public function handle(PortWasDeactivated $event)
 	{
             $fileToDelete = $event->portName . '.class';
-            $DeleteFile = Storage::delete( $fileToDelete );	
+            if (Storage::exists($fileToDelete))
+            {
+                Storage::delete( $fileToDelete );
+            }
 	}
 
 }

@@ -192,9 +192,9 @@
                                                                 </td>
                                                             @elseif ($port->is_monitored == 1)
                                                                 <td>
-                                                                   <i class="fa fa-check-circle goatCheckmark" data-toggle="modal" data-target="#monitorIsOn"></i>
+                                                                   <i class="fa fa-check-circle goatCheckmark" data-toggle="modal" data-target="#monitorIsOn{{ $port->id }}"></i>
                                                                     <!-- Modal to Turn Monitoring OFF -->
-                                                                    <div class="modal fade" id="monitorIsOn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                    <div class="modal fade" id="monitorIsOn{{ $port->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                                       <div class="modal-dialog">
                                                                         <div class="modal-content">
                                                                           <div class="modal-header">

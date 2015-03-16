@@ -30,7 +30,10 @@ class DeleteNagiosEntry implements ShouldBeQueued {
 	public function handle(MonitoringWasTurnedOff $event)
 	{
             $fileToDelete = $event->portName . '.cfg';
-            $DeleteFile = Storage::delete( $fileToDelete );	
+            if (Storage::exists($fileToDelete))
+            {
+                Storage::delete( $fileToDelete );
+            }
 	}
 
 }
