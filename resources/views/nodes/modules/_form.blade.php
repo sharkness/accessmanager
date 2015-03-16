@@ -20,7 +20,11 @@
 </div>
 <div class="form-group">
    {!! Form::label('port_count', 'Port Count: ') !!}
-   {!! Form::text('port_count', null, ['class' => 'form-control']) !!}
+    @if( isset($node->port_count))
+        {!! Form::select('port_count', ['24' => '24 ports', '48' => '48 ports'], $node->port_count) !!}
+    @else
+        {!! Form::select('port_count', ['24' => '24 ports', '48' => '48 ports'], '24') !!}
+    @endif
 </div>
 <div class="form-group">
    {!! Form::label('notes', 'Notes: ') !!}
