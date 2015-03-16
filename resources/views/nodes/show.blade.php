@@ -125,11 +125,31 @@
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                             <h4 class="modal-title" id="activatePort{{ $port->id }}">Port is Not Active</h4>
                                                                           </div>
-                                                                          <div class="modal-body">
-                                                                            {!! Form::model($port, ['route' => ['nodes.modules.ports.activatePort', $node->id, $module->id, $port->id], 'method' => 'post']) !!}
-                                                                            {!! Form::button('Activate ' . $port->name, ['type' => 'submit', 'class' => 'btn btn-success goatModalButton'] ) !!}
-                                                                            {!! Form::close() !!}    
-                                                                          </div>
+                                                                          
+                                                                          @if ($port->mgmt_ip == '127.0.0.1')
+                                                                              <div class="modal-body">
+                                                                              <h5>Before a port can be activated, you must configure the management IP address for the ONT.  127.0.0.1 is a generic placeholder.  Please set the management IP.</h5>
+                                                                                {!! Form::model($port, ['route' => ['nodes.modules.ports.activatePort', $node->id, $module->id, $port->id], 'method' => 'post']) !!}
+                                                                               <div class="form-group">
+                                                                                  {!! Form::label('mgmt_ip', 'Management IP: ') !!}
+                                                                                  {!! Form::text('mgmt_ip', null, ['class' => 'form-control']) !!}
+                                                                               </div>
+                                                                                {!! Form::button('Activate ' . $port->name, ['type' => 'submit', 'class' => 'btn btn-success goatModalButton'] ) !!}
+                                                                                {!! Form::close() !!}    
+                                                                              </div>
+                                                                          @else
+                                                                              <div class="modal-body">
+                                                                              <h5>Please verify the management IP.</h5>
+                                                                                {!! Form::model($port, ['route' => ['nodes.modules.ports.activatePort', $node->id, $module->id, $port->id], 'method' => 'post']) !!}
+                                                                               <div class="form-group">
+                                                                                  {!! Form::label('mgmt_ip', 'Management IP: ') !!}
+                                                                                  {!! Form::text('mgmt_ip', null, ['class' => 'form-control']) !!}
+                                                                               </div>
+                                                                                {!! Form::button('Activate ' . $port->name, ['type' => 'submit', 'class' => 'btn btn-success goatModalButton'] ) !!}
+                                                                                {!! Form::close() !!}    
+                                                                              </div>
+                                                                          @endif
+                                                                          
                                                                           <div class="modal-footer">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                                                           </div>
@@ -148,11 +168,14 @@
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                             <h4 class="modal-title" id="deactivatePort{{ $port->id }}">Port Is Active</h4>
                                                                           </div>
+                                                                          
                                                                           <div class="modal-body">
                                                                             {!! Form::model($node, ['route' => ['nodes.modules.ports.deactivatePort', $node->id, $module->id, $port->id], 'method' => 'post']) !!}
+                                                                            {!! Form::hidden('mgmt_ip', $port->mgmt_ip) !!}
                                                                             {!! Form::button('Deactivate ' . $port->name, ['type' => 'submit', 'class' => 'btn btn-danger goatModalButton'] ) !!}
                                                                             {!! Form::close() !!} 
                                                                           </div>
+                                                                          
                                                                           <div class="modal-footer">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                                                           </div>
@@ -179,15 +202,29 @@
                                                                             <h4 class="modal-title" id="turnMonitoringOf{{ $port->id }}">Monitoring is currently OFF</h4>
                                                                           </div>
                                                                           
-                                                                          <div class="modal-body">
-                                                                            {!! Form::model($port, ['route' => ['nodes.modules.ports.turnMonitoringOn', $node->id, $module->id, $port->id], 'method' => 'post']) !!}
-                                                                           <div class="form-group">
-                                                                              {!! Form::label('mgmt_ip', 'Management IP: ') !!}
-                                                                              {!! Form::text('mgmt_ip', null, ['class' => 'form-control']) !!}
-                                                                           </div>
-                                                                            {!! Form::button('Turn On Monitoring for ' . $port->name, ['type' => 'submit', 'class' => 'btn btn-success goatModalButton'] ) !!}
-                                                                            {!! Form::close() !!}    
-                                                                          </div>
+                                                                          @if ($port->mgmt_ip == '127.0.0.1')
+                                                                              <div class="modal-body">
+                                                                                  <h5>Before a host can be monitored, you must configure the management IP address for the ONT.  127.0.0.1 is a generic placeholder.  Please set the management IP.</h5>
+                                                                                {!! Form::model($port, ['route' => ['nodes.modules.ports.turnMonitoringOn', $node->id, $module->id, $port->id], 'method' => 'post']) !!}
+                                                                               <div class="form-group">
+                                                                                  {!! Form::label('mgmt_ip', 'Management IP: ') !!}
+                                                                                  {!! Form::text('mgmt_ip', null, ['class' => 'form-control']) !!}
+                                                                               </div>
+                                                                                {!! Form::button('Turn On Monitoring for ' . $port->name, ['type' => 'submit', 'class' => 'btn btn-success goatModalButton'] ) !!}
+                                                                                {!! Form::close() !!}    
+                                                                              </div>
+                                                                          @else
+                                                                              <div class="modal-body">
+                                                                                  <h5>Please verify the management IP.</h5>
+                                                                                {!! Form::model($port, ['route' => ['nodes.modules.ports.turnMonitoringOn', $node->id, $module->id, $port->id], 'method' => 'post']) !!}
+                                                                               <div class="form-group">
+                                                                                  {!! Form::label('mgmt_ip', 'Management IP: ') !!}
+                                                                                  {!! Form::text('mgmt_ip', null, ['class' => 'form-control']) !!}
+                                                                               </div>
+                                                                                {!! Form::button('Turn On Monitoring for ' . $port->name, ['type' => 'submit', 'class' => 'btn btn-success goatModalButton'] ) !!}
+                                                                                {!! Form::close() !!}    
+                                                                              </div>
+                                                                          @endif
                                                                           
                                                                           <div class="modal-footer">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -210,7 +247,7 @@
                                                                           
                                                                           <div class="modal-body">
                                                                             {!! Form::model($node, ['route' => ['nodes.modules.ports.turnMonitoringOff', $node->id, $module->id, $port->id], 'method' => 'post']) !!}
-                                                                             {!! Form::hidden('mgmt_ip', $port->mgmt_ip) !!}
+                                                                            {!! Form::hidden('mgmt_ip', $port->mgmt_ip) !!}
                                                                             {!! Form::button('Turn Off Monitoring for ' . $port->name, ['type' => 'submit', 'class' => 'btn btn-danger goatModalButton'] ) !!}
                                                                             {!! Form::close() !!} 
                                                                           </div>

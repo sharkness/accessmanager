@@ -10,6 +10,7 @@ use App\Module;
 use App\Port;
 use App\Http\Requests\CreatePortRequest;
 use App\Http\Requests\ChangeMonitoringRequest;
+use App\Http\Requests\ChangePortActivationRequest;
 use App\NagiosHost;
 use App\NagiosHoststatus;
 use App\Events\PortWasActivated;
@@ -136,19 +137,19 @@ class PortsController extends Controller {
             return redirect()->route('nodes.show', ['node' => $node->id]);
 	}
 
-	public function activatePort(Node $node, Module $module, Port $port)
+	public function activatePort(Node $node, Module $module, Port $port, ChangePortActivationRequest $request)
 	{
             $port->is_active = 1;
-            $port->save();
+            $port->update($request->all());
             \Event::fire(new PortWasActivated($port->id, $port->name, $port->mgmt_ip));
             // return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
             return redirect()->route('nodes.show', ['node' => $node->id]);
 	}
 
-	public function deactivatePort(Node $node, Module $module, Port $port)
+	public function deactivatePort(Node $node, Module $module, Port $port, ChangePortActivationRequest $request)
 	{
             $port->is_active = 0;
-            $port->save();
+            $port->update($request->all());
             \Event::fire(new PortWasDeactivated($port->id, $port->name, $port->mgmt_ip));
             // return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
             return redirect()->route('nodes.show', ['node' => $node->id]);
