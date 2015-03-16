@@ -122,7 +122,8 @@ class PortsController extends Controller {
             $port->is_monitored = 1;
             $port->save();
             \Event::fire(new MonitoringWasTurnedOn($port->name, $port->mgmt_ip));
-            return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
+            // return redirect()->route('nodes.modules.show', ['node' => $node->id, 'module' => $module->id]);
+            return redirect()->route('nodes.show', ['node' => $node->id]);
 	}
 
 	public function turnMonitoringOff(Node $node, Module $module, Port $port)

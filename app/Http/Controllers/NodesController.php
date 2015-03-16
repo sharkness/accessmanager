@@ -67,6 +67,7 @@ class NodesController extends Controller {
 	public function show(Node $node)
 	{
             $modules = $node->modules()->get();
+            $ports = Node::with('ports')->get();
             $nagiosHostData = $node->nagiosHostData;
             if( ! is_null($nagiosHostData))
             {
@@ -74,7 +75,7 @@ class NodesController extends Controller {
                 return view('nodes.show')->with('node', $node)->with('modules', $modules)->with('nagiosHostData', $nagiosHostData)->with('nagiosHostStatus', $nagiosHostStatus);
             } elseif ( is_null($nagiosHostData))
             {
-                return view('nodes.show')->with('node', $node)->with('modules', $modules);
+                return view('nodes.show')->with('node', $node)->with('modules', $modules)->with('ports', $ports);
             }
 	}
 
