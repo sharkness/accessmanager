@@ -26,7 +26,7 @@
             
 
 			<div class="panel-body">
-			    <h4><i class="fa fa-tasks"></i> Switch Details [{!! link_to_route('nodes.edit', 'Edit', $node->id) !!}]</h4>
+			    <h4><i class="fa fa-tasks"></i> {{ $node->name }} [{!! link_to_route('nodes.edit', 'Edit Switch Details', $node->id) !!}]</h4>
                                 <div class="row">
                                     <div class="col-md-6">
                                         Name: {{ $node->name }}<br>

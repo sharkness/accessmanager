@@ -9,3 +9,16 @@
 .goatModalButton {
     width: 100%;
 }
+
+.svgSwitchBox {
+	color: #fff;
+}
+.svgSwitchBox .well-sm {
+	min-height: 100px;
+}
+.svgSwitchBox .well {
+	background: green;
+}
+.svgSwitchBox a {
+	color: #fff;
+}

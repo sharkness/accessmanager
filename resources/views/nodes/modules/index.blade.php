@@ -29,7 +29,7 @@
                                     </ol>
                                 </div>
 
-			<div class="panel-body">
+			<div class="panel-body"><!--Modules/Cards svg-->
                                 <h5><i class="fa fa-sitemap"></i> Here are the cards in {{ $node->name }}</h5>
                                 <table class="table table-hover">
                                     <tr>
