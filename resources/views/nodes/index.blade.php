@@ -18,35 +18,50 @@
                                 </li>
                             </ol>
                         </div>
+<!--Good looking panels from Dashboard page -->
+						<div class="panel-body">
+                                        @if( ! count($nodes))
+                                        There are no Access Nodes in the database.
+                                        @else
+                                                @foreach ($nodes as $node)
+                                                
+                                                <div class="col-md-4 col-sm-12">
 
-			<!--Sam's panels of switches... -->
-				<div class="panel-body">
-                @if ( ! count($nodes))
-                    <h4>There are no access switches here.</h4>
-                        You should {!! link_to_route('nodes.create', 'add an access switch') !!}.
-                @elseif ( count($nodes))
-					 @foreach ($nodes as $node)
-					 
-					<div class="col-sm-12 col-md-4 svgSwitchBox">
-						<div class="well">
-							<h3><i class="fa fa-tasks"></i>
-								{!! link_to_route('nodes.show', $node->name, $node->id ) !!}
-							</h3>
+                                                    <div class="panel panel-green">
 
-							<div class="well-sm">
-							Location: {{ $node->location }}    
-							Model: {{ $node->model_number }}   
-							Management IP: {{ $node->mgmt_ip }}
-							</div>
-						</div> <!-- end containing well -->
-					</div><!--end svgSwitchBox-->
-					@endforeach
-				</div><!--end panel-body-->
-             @endif
-			 
-			 <div class="clearfix">******</div>
-			
-<!-- ************************************************************* -->
+                                                        <div class="panel-heading">
+                                                            <div class="row">
+                                                                <div class="col-xs-3">
+                                                                    <i class="fa fa-th-list fa-5x"></i>
+                                                                </div>
+                                                                <div class="col-xs-9 text-right">
+                                                                    <div class="huge"></div>
+                                                                    <div>{{ $node->name }}</div>
+                                                                    <div>{{ count($node->modules) }} cards</div>
+                                                                    <div>{{ count($node->ports) }} ports</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <a href="/nodes/{{ $node->id }}">
+                                                            <div class="panel-footer">
+                                                                <span class="pull-left">{{ $node->model_number }} | 
+                                                                    @if (isset($node->mgmt_ip))
+                                                                        {{ $node->mgmt_ip }}
+                                                                    @else
+                                                                        No IP Assigned
+                                                                    @endif
+                                                                </span>
+                                                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                @endforeach
+                                            @endif
+						</div><!--end panel body line 22-->
+
+
 		</div><!--end line 6 panel-default-->
 	</div><!--end line 5 col-md-12-->
 </div>
