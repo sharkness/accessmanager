@@ -19,6 +19,7 @@ Route::get('start', 'HomeController@start');
 
 Route::get('dashboard', 'DashboardController@index');
 
+Route::resource('support', 'SupportController');
 Route::resource('nodes', 'NodesController');
 Route::resource('nodes.modules', 'ModulesController');
 Route::resource('nodes.modules.ports', 'PortsController');

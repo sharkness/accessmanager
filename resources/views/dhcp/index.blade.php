@@ -20,7 +20,7 @@
                         </div>
 
 			<div class="panel-body">
-                                ...DHCP
+                                ...no connection
 			</div>
 		</div>
 	</div>

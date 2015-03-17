@@ -58,6 +58,8 @@
 
                                 <hr>
                                 
+                                <img src="/images/ping2.png">
+                                
 			</div>
 		</div>
 	</div>
