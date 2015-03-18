@@ -10,15 +10,24 @@
     width: 100%;
 }
 
-.svgSwitchBox {
-	color: #fff;
+.svgListHead{
+    width: 150px;
+    display: inline-block;
 }
-.svgSwitchBox .well-sm {
-	min-height: 100px;
-}
-.svgSwitchBox .well {
-	background: green;
-}
-.svgSwitchBox a {
-	color: #fff;
+.svgListDetail{
+	font-size: 17px;
+	display: inline;
+	padding: .2em .8em .3em;  
+	line-height: 1;
+	color: #000000;
+	text-align: center;
+	box-shadow: 1px 1px 2px 1px #9d9d9d;
+	-webkit-box-shadow: 1px 1px 2px 1px #9d9d9d;
+	-moz-box-shadow: 1px 1px 2px 1px #9d9d9d;
+	-o-box-shadow: 1px 1px 2px 1px #9d9d9d;
+	background-color: rgba(169, 169, 169, 0.15);
+	border-radius: .25em;
+	font-variant: small-caps;
+	letter-spacing: .1em;
+	margin-right: 0 !important;
 }

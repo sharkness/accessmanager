@@ -26,28 +26,59 @@
             
 
 			<div class="panel-body">
-			    <h4><i class="fa fa-tasks"></i> {{ $node->name }} [{!! link_to_route('nodes.edit', 'Edit Switch Details', $node->id) !!}]</h4>
+			    <h4><i class="fa fa-tasks"></i> {{ $node->name }}</h4>
+				
+					
+				<hr />
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        Name: {{ $node->name }}<br>
-                                        Model: {{ $node->model_number }}<br>
-                                        Location: {{ $node->location }}<br>
-                                        Management IP: {{ $node->mgmt_ip }}<br>
-                                        Notes: {{ $node->notes }}<br>
-                                    </div>
-                                    <div class="col-md-6">
-                                        @if ( ! isset($nagiosHostStatus))
-                                            Monitoring is not set up for this host.
-                                        @elseif ( isset($nagiosHostStatus))
-                                            @if ( $nagiosHostStatus->current_state == 0)
-                                                Status: This host is up!
-                                            @elseif ( $nagiosHostStatus->current_state == 1)
-                                                Status: This host is down!
-                                            @endif
-                                        @endif
-                                    </div>
-                                </div>
-                                
+									
+                                    <div class="col-md-12">
+									
+										<div class="small">
+											<i class="fa fa-edit"></i>
+											[{!! link_to_route('nodes.edit', 'Edit Switch Details', $node->id) !!}]
+										</div>
+										
+										<div class="col-md-8 col-md-offset-2 col-sm-12 list-group svgList">
+                                    	    	<li class="list-group-item">
+													<span class="svgListHead">Name:</span> 
+													<span class="svgListDetail">{{ $node->name }}</span>
+												</li>
+                                    	    	<li class="list-group-item">
+													<span class="svgListHead">Model:</span>
+													<span class="svgListDetail">{{ $node->model_number }}</span>
+												</li>
+                                    	    	<li class="list-group-item">
+													<span class="svgListHead">Location:</span>
+													<span class="svgListDetail">{{ $node->location }}</span>
+												</li>
+                                    	    	<li class="list-group-item">
+													<span class="svgListHead">Management IP:</span>
+													<span class="svgListDetail">{{ $node->mgmt_ip }}<span>
+													</li>
+                                    	    	<li class="list-group-item">
+													<span class="svgListHead">Notes:</span>
+													<span class="svgListDetail">{{ $node->notes }}</span>
+												</li>
+                                    	    	<li class="list-group-item">
+		                                      	    @if ( ! isset($nagiosHostStatus))
+		                                      	  <span class="list-group-item list-group-item-warning text-center">Monitoring is not set up for this host.</span>
+		                                      	    @elseif ( isset($nagiosHostStatus))
+		                                      	        @if ( $nagiosHostStatus->current_state == 0)
+		                                      	  <span class="list-group-item list-group-item-success text-center">Status: This host is up! </span>
+		                                      	        @elseif ( $nagiosHostStatus->current_state == 1)
+		                                      	  <span class="list-group-item list-group-item-danger text-center">Status: This host is down!</span>
+		                                      	        @endif
+                                    	    		@endif
+                                    	    	</li>
+
+                                    	</div><!--end .svgList-->
+										
+									</div>
+									
+								</div><!--end row-->
+                         
+						 <div class="clearfix"></div>
                                 <hr>
                                 
                                 <!-- <h4>Cards in {{ $node->name }}</h4>
